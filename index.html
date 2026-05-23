@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Whisperia Library</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff9f3;
+    overflow-x:hidden;
+	overflow-y:auto;
+    font-family:'Poppins',sans-serif;
+    color:#333;
+}
+
+/* ================= HEADER ================= */
+header{
+    width:100%;
+    background:#C31149;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#F3D9B1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.logo-text h2{
+    color:white;
+    font-size:30px;
+    font-family:'Cinzel',serif;
+}
+.logo-text h2 span{
+    color:#F3D9B1;
+    font-size:38px;
+    font-family:'Cinzel',serif;
+}
+.logo-text p{
+    color:#ffe2eb;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+align-items:center;
+}
+
+nav ul li{
+position:relative;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+padding:10px 0;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+nav ul li a:hover{
+color:#F3D9B1;
+}
+
+/* GARIS BAWAH ANIMASI */
+nav ul li a{
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+
+width:0%;
+height:3px;
+
+background:#F3D9B1;
+border-radius:10px;
+
+transition:0.35s ease;
+}
+
+/* SAAT DI HOVER */
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MENU YANG SEDANG AKTIF */
+nav ul li a.active::after{
+width:100%;
+}
+
+nav ul li a.active{
+color:#F3D9B1;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu{
+pointer-events:auto;
+position:absolute;
+top:100%;
+left:0;
+background:white;
+width:270px;
+
+z-index:9999;
+
+border-radius:0 0 16px 16px;
+overflow:hidden;
+
+opacity:0;
+visibility:hidden;
+transform:translateY(15px);
+
+transition:0.35s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+color:#333;
+padding:16px 22px;
+display:block;
+font-size:15px;
+border-bottom:1px solid #f2f2f2;
+transition:0.3s;
+}
+
+.dropdown-menu a:hover{
+background:#C31149;
+color:white;
+padding-left:30px;
+}
+
+/* ================= HERO ================= */
+.hero{
+    width:100%;
+    height:100vh;
+    position:relative;
+	bottom:-85px;
+}
+
+.slider{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+.slide{
+    width:100%;
+    height:100vh;
+    position:absolute;
+
+    background-size:cover;
+    background-position:center;
+
+    opacity:0;
+    transition:1s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.overlay{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    position:absolute;
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+    position:absolute;
+    top:70%;
+    left:15%;
+	transform:translateY(-50%);
+
+    width:100%;
+    padding:0 6%;
+
+    max-width:900px;
+    color:white;
+    z-index:10;
+	text-align:left;
+}
+
+.hero-content h1{
+	margin-left:-180px;
+    font-size:66px;
+    line-height:1.08;
+    margin-bottom:22px;
+    font-weight:700;
+}
+
+.hero-content p{
+	margin-left:-180px;
+    font-size:18px;
+    line-height:1.9;
+    color:#f3f3f3;
+}
+
+/* ================= MASKOT ================= */
+
+.maskot{
+    position:absolute;
+    right:5%;
+    bottom:8%;
+    width:250px;
+    z-index:8;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+    transform:translateY(0px);
+}
+
+50%{
+    transform:translateY(-15px);
+}
+
+100%{
+    transform:translateY(0px);
+}
+
+}
+
+/* ================= SEARCH ================= */
+
+/* ================= SEARCH CONTAINER ================= */
+
+.search-section{
+    margin-top:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.search-container{ 
+	width:200%; 
+	max-width:1700px; 
+	background-color:#F8F6F3;
+	border:1px solid rgba(255,255,255,0.2); 
+	border-radius:35px; 
+	padding:22px; 
+	box-shadow:0 12px 35px rgba(0,0,0,0.2); \
+	color:#C33149;
+}
+
+/* ================= MASKOT SEARCH ================= */
+
+.search-container{
+    position:relative;
+    overflow:visible;
+}
+
+/* MASKOT */
+
+.search-maskot{
+    position:absolute;
+
+    width:170px;
+
+    left:-120px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:20;
+
+    animation:
+    maskotFloat 3s ease-in-out infinite,
+    maskotShake 5s ease-in-out infinite;
+
+    filter:
+    drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+
+    transition:0.4s;
+}
+
+/* hover */
+
+.search-maskot:hover{
+
+    transform:
+    translateY(-50%)
+    scale(1.08)
+    rotate(-6deg);
+
+}
+
+/* naik turun */
+
+@keyframes maskotFloat{
+
+0%{
+    transform:translateY(-50%) translateY(0px);
+}
+
+50%{
+    transform:translateY(-50%) translateY(-12px);
+}
+
+100%{
+    transform:translateY(-50%) translateY(0px);
+}
+
+}
+
+/* goyang lucu */
+
+@keyframes maskotShake{
+
+0%{
+    rotate:0deg;
+}
+
+25%{
+    rotate:2deg;
+}
+
+50%{
+    rotate:-2deg;
+}
+
+75%{
+    rotate:2deg;
+}
+
+100%{
+    rotate:0deg;
+}
+
+}
+
+/* ================= SEARCH BOX ================= */
+
+.search-box{ background:#C33149;
+	border-radius:55px; 
+	padding:10px 12px 10px 24px; 
+	display:flex; 
+	align-items:center; 
+	justify-content:space-between; 
+	gap:15px; 
+	width:100%;
+}
+
+.search-left{
+    display:flex;
+    align-items:center;
+    width:100%;
+}
+
+.search-left input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:17px;
+    color:whitw;
+    background:transparent;
+    font-family:'Poppins',sans-serif;
+}
+
+.search-left input::placeholder{
+    color:#F3D9B1;
+}
+
+.search-btn{
+    min-width:56px;
+    height:56px;
+    border:none;
+    border-radius:50%;
+    background:#F3D9B1;
+    color:#C31149;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.35s ease;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.search-btn:hover{
+    background:#F3D9B1;
+    color:#C31149;
+    transform:scale(1.08);
+}
+
+/* ================= QUICK ACCESS ================= */
+
+.quick-access{
+    margin-top:18px;
+
+    display:flex;
+    justify-content:center;
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,0.3);
+}
+
+.quick-btn{
+    background:#F3D9B1;
+    color:#C31149;
+
+    padding:13px 24px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+    font-weight:600;
+
+    transition:0.4s;
+}
+
+.quick-btn:hover{
+    background:#C31149;
+    color:white;
+
+    transform:translateY(-5px);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+	margin-top:140px;
+	position:relative;
+    padding:200px 6% 50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+}
+
+.stat-card i{
+    font-size:45px;
+    color:#C31149;
+    margin-bottom:18px;
+}
+
+.stat-card h2{
+    font-size:42px;
+    color:#C31149;
+}
+
+.stat-card p{
+    margin-top:10px;
+    color:#666;
+}
+
+/* ================= SECTION ================= */
+section{
+    padding:15px 6%;
+}
+
+.title{
+    font-size:40px;
+    color:#C31149;
+    margin-bottom:50px;
+    position:relative;
+    font-family:'Cinzel',serif;
+}
+
+.title::after{
+    content:'';
+    width:90px;
+    height:5px;
+    background:#F3D9B1;
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    border-radius:20px;
+}
+
+/* ================= AGENDA ================= */
+
+.agenda-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.agenda-card{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.5s;
+}
+
+.agenda-card:hover{
+    transform:translateY(-12px);
+}
+
+.agenda-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.agenda-content{
+    padding:25px;
+}
+
+.badge{
+    background:#C31149;
+    color:white;
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.agenda-content h3{
+    color:#C31149;
+    margin-bottom:15px;
+}
+
+.agenda-content p{
+    color:#666;
+    line-height:1.7;
+}
+
+.announce-box{
+    transition:0.3s;
+}
+
+/* ================= BERITA ================= */
+
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.news-card{
+    background:white;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.news-card:hover{
+    transform:scale(1.03);
+}
+
+.news-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.news-content{
+    padding:25px;
+}
+
+.news-content h3{
+    color:#C31149;
+    margin-bottom:15px;
+}
+
+.news-content p{
+    color:#666;
+    line-height:1.7;
+}
+
+.news-content a{
+    text-decoration:none;
+}
+
+.announce-box{
+    transition:0.3s;
+}
+
+/* ================= SECTION MORE ================= */
+
+.section-more{
+    margin-top:35px;
+    text-align:right;
+}
+
+.section-more a{
+    text-decoration:none;
+    color:#C31149;
+
+    font-weight:600;
+    font-size:15px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    transition:0.35s ease;
+}
+
+.section-more a i{
+    transition:0.35s ease;
+}
+
+.section-more a:hover{
+    color:#8f0b36;
+}
+
+.section-more a:hover i{
+    transform:translateX(6px);
+}
+
+/* ================= PENGUMUMAN ================= */
+
+.announcement{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.announce-box{
+    background:white;
+    padding:25px;
+    border-left:8px solid #C31149;
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.announce-box:hover{
+    transform:translateX(10px);
+}
+
+.announce-box h4{
+    color:#C31149;
+    margin-bottom:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#C31149;
+    color:white;
+    padding:85px 6% 35px;
+    position:relative;
+    overflow:hidden;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    align-items:flex-start;
+}
+
+/* ========= LOGO ========= */
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.circle{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    background:transparent;
+    flex-shrink:0;
+}
+
+.circle:hover{
+    transform:rotate(10deg) scale(1.08);
+}
+
+.circle img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+    display:block;
+}
+
+.footer-logo h3{
+    font-size:26px;
+    margin-bottom:4px;
+}
+
+.footer-tagline{
+    color:#ffe0ea;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.footer-desc{
+    color:#ffe6ee;
+    line-height:1.8;
+    margin-bottom:28px;
+    text-align: justify;
+}
+
+
+/* ========= SOSMED ========= */
+
+.social-title{
+    color:#F3D9B1;
+    margin-bottom:16px;
+    font-weight:600;
+    font-size:17px;
+}
+
+.socials{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:24px;
+    background:#F3D9B1;
+    color:#C31149;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ANIMASI SOSMED */
+
+.socials a::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    top:100%;
+    left:0;
+    transition:0.4s;
+    z-index:0;
+}
+
+.socials a:hover::before{
+    top:0;
+}
+
+.socials a i{
+    position:relative;
+    z-index:2;
+}
+
+.socials a:hover{
+    transform:translateY(-8px) rotate(10deg) scale(1.08);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ========= TITLE ========= */
+
+.footer-title{
+    color:#F3D9B1;
+    margin-bottom:22px;
+    font-size:22px;
+}
+
+/* ========= LINKS ========= */
+
+.footer-links a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    margin-bottom:14px;
+    transition:0.35s;
+}
+
+.footer-links a:hover{
+    color:#F3D9B1;
+    transform:translateX(8px);
+}
+
+/* ========= INFO ========= */
+
+.footer-info p{
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ffe6ee;
+}
+
+/* ========= MAP ========= */
+
+iframe{
+    width:100%;
+    border:none;
+    border-radius:20px;
+    margin-top:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ========= CONTACT ========= */
+
+.contact-box{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.contact-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#F3D9B1;
+    color:#C31149;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    transition:0.35s;
+}
+
+.contact-item:hover .contact-icon{
+    transform:rotate(10deg) scale(1.1);
+    background:white;
+}
+
+/* ========= COPYRIGHT ========= */
+
+.copyright{
+    text-align:center;
+    margin-top:65px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    color:#ffe2eb;
+    font-size:15px;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:768px){
+
+.footer-container{
+    gap:40px;
+}
+
+.footer-logo{
+    align-items:flex-start;
+}
+
+.socials{
+    justify-content:flex-start;
+}
+
+}
+
+/* ================= SEARCH HIGHLIGHT ================= */
+
+.search-highlight{
+    color:#0d47a1;
+    font-weight:800;
+    text-shadow:
+        0 0 8px rgba(255,215,0,.8),
+        0 0 14px rgba(255,215,0,.6);
+}
+
+.search-found{
+    position:relative;
+    border:2px solid rgba(243,217,177,.9);
+    box-shadow:
+        0 0 0 5px rgba(243,217,177,.18),
+        0 15px 35px rgba(195,17,73,.15);
+    transform:translateY(-3px);
+}
+
+.search-found::before{
+    content:"Ditemukan";
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:#C31149;
+    color:white;
+    font-size:11px;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:20px;
+    z-index:10;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+<div class="logo-area">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo Whisperia">
+    </div>
+
+    <div class="logo-text">
+        <h2><span>W</span>hisperia Library</h2>
+        <p>WHERE KNOWLEDGE FEELS LIKE HOME</p>
+    </div>
+
+</div>
+
+<!-- Navbar -->
+    <nav>
+        <ul>
+
+            <!-- BERANDA -->
+			<li>
+                <a href="home.html">Beranda</a>
+			</li>
+				
+            <!-- PROFIL -->
+            <li class="dropdown">
+                <a href="halaman8.html">Profil ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="sejarah.html">Sejarah</a>
+                    <a href="visimisi.html">Visi & Misi</a>
+                    <a href="strukturorganisasi.html">Struktur Organisasi</a>
+                    <a href="maskotperpustakaan.html">Maskot Perpustakaan</a>
+                </div>
+            </li>
+			
+			<!-- KOLEKSI -->
+            <li><a href="koleksi.html">Koleksi</a>
+			</li>
+
+            <!-- LAYANAN -->
+            <li class="dropdown">
+                <a href="opening layanan.html">Layanan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="opac.html">OPAC</a>
+                    <a href="layanan 1.html">Layanan Sirkulasi</a>
+                    <a href="layanan 3.html">Layanan Referensi</a>
+                    <a href="Layanan Maker Space Whisperia.html">Layanan Maker Space</a>
+                    <a href="Layanan Bahasa Whisperia.html">Layanan Bahasa</a>
+                </div>
+            </li>
+
+            <!-- BANTUAN -->
+            <li class="dropdown">
+                <a href="#">Bantuan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="Syarat Pinjam Koleksi Whisperia.html">Syarat Pinjam Koleksi</a>
+                    <a href="Panduan Whisperia.html">Panduan</a>
+                    <a href="FAQ Whisperia.html">FAQ</a>
+                </div>
+            </li>
+
+            <!-- KONTAK -->
+            <li>
+                <a href="CONTACT US TRIAL 24.html">Kontak</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+<div class="hero">
+<div class="slider">
+<div class="slide active"
+style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop');">
+<div class="overlay"></div>
+</div>
+
+<div class="slide"
+style="background-image:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1600&auto=format&fit=crop');">
+<div class="overlay"></div>
+</div>
+
+<div class="slide"
+style="background-image:url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1600&auto=format&fit=crop');">
+<div class="overlay"></div>
+</div>
+
+</div>
+
+<!-- HERO CONTENT -->
+
+
+<div class="hero-content">
+
+<h1>
+Temukan Dunia Pengetahuan di Setiap Halaman
+</h1>
+
+<p>
+Ruang belajar modern, nyaman, dan inspiratif untuk membaca,
+menjelajah informasi, serta menemukan pengalaman baru bersama perpustakaan.
+</p>
+
+<!-- SEARCH -->
+
+
+<div class="search-section">
+
+<div class="search-container">
+
+<!-- MASKOT SEARCH -->
+
+<img src="mencari.png" class="search-maskot">
+
+<!-- SEARCH BOX -->
+
+<div class="search-box">
+
+<div class="search-left">
+
+<input type="text"
+placeholder="Cari agenda, berita, dan informasi lainnya...">
+
+</div>
+
+<button class="search-btn">
+<i class="fa-solid fa-globe"></i>
+</button>
+
+</div>
+
+<!-- QUICK ACCESS -->
+
+<div class="quick-access">
+
+<a href="koleksi.html" class="quick-btn">Lihat Koleksi</a>
+<a href="opac.html" class="quick-btn">OPAC</a>
+<a href="Panduan Whisperia.html" class="quick-btn">Panduan</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+<i class="fa-solid fa-book"></i>
+<h2>25K+</h2>
+<p>Koleksi Buku</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-users"></i>
+<h2>12K+</h2>
+<p>Pengunjung Aktif</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-laptop"></i>
+<h2>8K+</h2>
+<p>E-Book Digital</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-calendar-days"></i>
+<h2>150+</h2>
+<p>Kegiatan Tahunan</p>
+</div>
+
+</div>
+
+<!-- ================= AGENDA ================= -->
+
+<section>
+
+<h2 class="title">Agenda</h2>
+
+<div class="agenda-container">
+
+<div class="agenda-card">
+
+<img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop">
+
+<div class="agenda-content">
+
+<div class="badge">Coming Soon: 28 Juni 2026</div>
+
+<h3>Pelatihan Literasi Informasi</h3>
+
+<p>Belajar mencari, mengevaluasi, dan menggunakan informasi digital secara efektif.</p>
+
+</div>
+
+</div>
+
+<div class="agenda-card">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+
+<div class="agenda-content">
+
+<div class="badge">Coming Soon: 9 Agustus 2026</div>
+
+<h3>Pameran Buku Nasional</h3>
+
+<p>Pameran koleksi buku terbaik, talkshow penulis, dan bazar penerbit nasional.</p>
+
+</div>
+
+</div>
+
+<div class="agenda-card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="agenda-content">
+
+<div class="badge">Coming Soon: 4 Oktober 2026</div>
+
+<h3>Kemah Literasi</h3>
+
+<p>Kegiatan outdoor edukatif dengan diskusi buku, permainan tim, dan pengembangan karakter.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section-more">
+<a href="AGENDA TRIAL 9.html">
+Lihat Selengkapnya
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+
+</section>
+
+<!-- ================= BERITA ================= -->
+
+<section>
+
+<h2 class="title">Berita</h2>
+
+<div class="news-grid">
+
+<div class="news-card">
+
+<img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop">
+
+<div class="news-content">
+<a href="berita whisper.html">
+<h3>Pelatihan Teknologi Digital Tingkatkan Kemampuan dan Kreativitas Peserta</h3>
+
+<p>Semarang, 5 Januari 2026</p>
+</a>
+</div>
+
+</div>
+
+<div class="news-card">
+
+<img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200&auto=format&fit=crop">
+
+<div class="news-content">
+<a href="berita 2 whisper.html">
+<h3>Seminar Literasi Bahas Pentingnya Meningkatkan Budaya Membaca di Masyarakat</h3>
+
+<p>Semarang, 25 Februari 2026</p>
+</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="section-more">
+<a href="AGENDA TRIAL 9.html">
+Lihat Selengkapnya
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+</div>
+
+
+</section>
+
+<!-- ================= PENGUMUMAN ================= -->
+
+<section>
+
+<h2 class="title">Pengumuman</h2>
+
+<div class="announcement">
+
+<div class="announce-box">
+<h4>Perubahan Jam Operasional</h4>
+<p>Perpustakaan kini buka hingga pukul 20.00 WIB.</p>
+</div>
+
+<div class="announce-box">
+<h4>Pendaftaran Member Baru</h4>
+<p>Pendaftaran anggota perpustakaan kini dapat dilakukan secara online.</p>
+</div>
+
+<div class="announce-box">
+<h4>Layanan OPAC Diperbarui</h4>
+<p>Sistem pencarian koleksi menjadi lebih cepat dan modern.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<!-- ========= KOLOM 1 ========= -->
+
+<div>
+
+<div class="footer-logo">
+
+<!-- LOGO -->
+<div class="circle">
+
+
+
+<img src="logo.png">
+
+
+
+</div>
+
+<div>
+
+<h3>Whisperia Library</h3>
+
+<p class="footer-tagline">
+WHERE KNOWLEDGE FEELS LIKE HOME
+</p>
+
+</div>
+
+</div>
+
+<p class="footer-desc">
+Perpustakaan modern yang menyediakan akses informasi,
+koleksi pengetahuan, ruang belajar nyaman,
+serta layanan digital inspiratif bagi seluruh pengunjung.
+</p>
+
+</div>
+
+<!-- ========= KOLOM 2 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Jam Operasional
+</h3>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Senin - Jumat : 08.00 - 20.00
+</p>
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Sabtu : 09.00 - 17.00
+</p>
+
+</div>
+
+<br>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+Jl. Tembalang Selatan III No.60, Pedalangan, Banyumanik, Kota Semarang, Jawa Tengah
+</p>
+
+</div>
+
+<iframe src="https://maps.google.com/maps?q=Jl.%20Tembalang%20Selatan%20III%20No.%2060,%20Pedalangan,%20Banyumanik,%20Kota%20Semarang,%20Jawa%20Tengah&t=&z=17&ie=UTF8&iwloc=&output=embed"
+width="100%" 
+  height="200" 
+  style="border:0; border-radius: 4px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</div>
+
+<!-- ========= KOLOM 3 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Quick Links
+</h3>
+
+<div class="footer-links">
+
+<a href="Syarat Pinjam Koleksi Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Syarat Pinjam Koleksi
+</a>
+
+<a href="FAQ Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+FAQ
+</a>
+
+</div>
+
+<br>
+
+<h3 class="footer-title">
+Daftar Layanan
+</h3>
+
+<div class="footer-links">
+
+<a href="layanan 1.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Sirkulasi
+</a>
+
+<a href="layanan 3.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Referensi
+</a>
+
+<a href="Layanan Maker Space Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Maker Space
+</a>
+
+<a href="Layanan Bahasa Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Bahasa
+</a>
+
+</div>
+
+</div>
+
+<!-- ========= KOLOM 4 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Kontak Kami
+</h3>
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<p>whisperialibrary@gmail.com</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<p>+62 895 1221 8040</p>
+</div>
+
+</div>
+
+<div class="social-title">
+Sosial Media Kami
+</div>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/whisperia.libs?igsh=eGVkNnFmOHl4YjI4"
+target="_blank"
+class="instagram">
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="https://www.tiktok.com/@whisperialibs?_r=1&_t=ZS-96DiwBWRsjE"
+target="_blank"
+class="tiktok">
+
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://youtube.com/@whispiee?si=dSfwmZYw-iuWT4tF"
+target="_blank"
+class="youtube">
+
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="copyright">
+
+© 2026 Whisperia Library — All Rights Reserved
+
+</div>
+
+</footer>
+
+<script>
+
+/* ================= SLIDER ================= */
+
+const slides = document.querySelectorAll('.slide');
+let index = 0;
+
+function changeSlide() {
+
+    slides[index].classList.remove('active');
+
+    index++;
+
+    if (index >= slides.length) {
+        index = 0;
+    }
+
+    slides[index].classList.add('active');
+}
+
+setInterval(changeSlide, 4000);
+
+
+/* ================= SEARCH MODERN ================= */
+
+const searchInput = document.querySelector('.search-left input');
+const searchBtn = document.querySelector('.search-btn');
+
+const searchableItems = document.querySelectorAll(
+'.agenda-card, .news-card, .announce-box'
+);
+
+/* simpan HTML asli */
+searchableItems.forEach(item=>{
+    item.dataset.original = item.innerHTML;
+});
+
+function removeHighlights(){
+
+    searchableItems.forEach(item=>{
+
+        item.innerHTML = item.dataset.original;
+        item.classList.remove('search-found');
+
+    });
+
+}
+
+function performSearch(){
+
+    const keyword = searchInput.value.trim();
+
+    removeHighlights();
+
+    if(keyword === "") return;
+
+    let found = false;
+    let firstMatch = null;
+
+    searchableItems.forEach(item=>{
+
+        const text = item.textContent.toLowerCase();
+
+        if(text.includes(keyword.toLowerCase())){
+
+            found = true;
+
+            item.classList.add('search-found');
+
+            if(!firstMatch){
+                firstMatch = item;
+            }
+
+            const regex = new RegExp(
+                `(${keyword.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,
+                'gi'
+            );
+
+            item.innerHTML =
+                item.innerHTML.replace(
+                    regex,
+                    '<span class="search-highlight">$1</span>'
+                );
+
+        }
+
+    });
+
+    if(found){
+
+        firstMatch.scrollIntoView({
+            behavior:'smooth',
+            block:'center'
+        });
+
+    }else{
+
+        alert("Informasi tidak ditemukan.");
+
+    }
+
+}
+
+searchBtn.addEventListener('click', performSearch);
+
+searchInput.addEventListener('keydown', e=>{
+
+    if(e.key === 'Enter'){
+        performSearch();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

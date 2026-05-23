@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Layanan Bahasa - Whisperia Library</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+/* ================= AWALAN ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff9f3;
+    overflow-x:hidden;
+    color:#3a2b2b;
+}
+/* ================= BACKGROUND ================= */
+.bg-circle1{
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#ffd8e6;
+    border-radius:50%;
+    top:-180px;
+    left:-180px;
+    filter:blur(100px);
+    z-index:-2;
+}
+.bg-circle2{
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#ffe7b7;
+    border-radius:50%;
+    bottom:-150px;
+    right:-100px;
+    filter:blur(100px);
+    z-index:-2;
+}
+
+/* ================= HEADER ================= */
+header{
+    width:100%;
+    background:#C31149;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#F3D9B1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.logo-text h2{
+    color:white;
+    font-size:30px;
+    font-family:'Cinzel',serif;
+}
+.logo-text h2 span{
+    color:#F3D9B1;
+    font-size:38px;
+}
+.logo-text p{
+    color:#ffe2eb;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+align-items:center;
+}
+
+nav ul li{
+position:relative;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+padding:10px 0;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+nav ul li a:hover{
+color:#F3D9B1;
+}
+
+/* GARIS BAWAH ANIMASI */
+nav ul li a{
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+
+width:0%;
+height:3px;
+
+background:#F3D9B1;
+border-radius:10px;
+
+transition:0.35s ease;
+}
+
+/* SAAT DI HOVER */
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MENU YANG SEDANG AKTIF */
+nav ul li a.active::after{
+width:100%;
+}
+
+nav ul li a.active{
+color:#F3D9B1;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu{
+pointer-events:auto;
+position:absolute;
+top:100%;
+left:0;
+background:white;
+width:270px;
+
+z-index:9999;
+
+border-radius:0 0 16px 16px;
+overflow:hidden;
+
+opacity:0;
+visibility:hidden;
+transform:translateY(15px);
+
+transition:0.35s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+color:#333;
+padding:16px 22px;
+display:block;
+font-size:15px;
+border-bottom:1px solid #f2f2f2;
+transition:0.3s;
+}
+
+.dropdown-menu a:hover{
+background:#C31149;
+color:white;
+padding-left:30px;
+}
+
+/* ================= HERO ================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:170px 7% 120px;
+    background:linear-gradient(
+        180deg,
+        #c90b4f 0%,
+        #b10846 45%,
+        #97073b 100%
+    );
+    position:relative;
+    overflow:hidden;
+}
+.hero::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    right:-120px;
+    top:-110px;
+}
+.hero::after{
+    content:'';
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    left:-180px;
+    bottom:-180px;
+}
+/* ================= EMOT MELAYANG DI HERO ================= */
+.floating-icon{
+    position:absolute;
+    font-size:40px;
+    opacity:0.18;
+    animation:float 6s ease-in-out infinite;
+}
+.icon1{
+    top:20%;
+    left:12%;
+}
+.icon2{
+    top:65%;
+    left:15%;
+    animation-delay:1s;
+}
+.icon3{
+    top:22%;
+    right:15%;
+    animation-delay:2s;
+}
+.icon4{
+    bottom:20%;
+    right:18%;
+    animation-delay:3s;
+}
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-18px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+/* ================= TEXT DI HERO ================= */
+.hero-left{
+    max-width:980px;
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+.hero-badge{
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:12px 25px;
+    border-radius:40px;
+    color:white;
+    margin-bottom:25px;
+    backdrop-filter:blur(10px);
+    font-size:14px;
+}
+.hero-left h1{
+    font-size:78px;
+    line-height:1.1;
+    color:#ffe7b8;
+    margin-bottom:25px;
+    font-family:Georgia, serif;
+}
+.hero-left h1 span{
+    color:white;
+}
+.hero-left p{
+    max-width:760px;
+    color:white;
+    line-height:2;
+    font-size:16px;
+    margin-bottom:40px;
+}
+/* ================= ANAK JUDUL ================= */
+.main-panel{
+    width:88%;
+    margin:-80px auto 0;
+    background:rgba(255,255,255,0.72);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:45px;
+    padding:60px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+/* ================= ANAK DARI ANAK JUDUL ================= */
+.section-title{
+    margin-bottom:45px;
+}
+.section-title h2{
+    font-size:50px;
+    color:#5a0b24;
+    margin-bottom:12px;
+}
+.section-title p{
+    color:#777;
+    font-size:17px;
+    line-height:1.9;
+}
+/* ================= CARD GRID LAYANAN BAHASA ================= */
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+}
+/* ================= CARD LAYANAN BAHASA ================= */
+.card{
+    position:relative;
+    background:
+    linear-gradient(
+        180deg,
+        rgba(255,255,255,0.96),
+        rgba(255,255,255,0.84)
+    );
+    backdrop-filter:blur(16px);
+    border-radius:35px;
+    padding:30px 28px;
+    overflow:hidden;
+    transition:0.45s ease;
+    border:1px solid rgba(255,255,255,0.7);
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+    min-height:340px;
+}
+.card:hover{
+    transform:translateY(-12px);
+}
+.card::before{
+    content:'';
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:40px;
+    top:-70px;
+    right:-70px;
+    transform:rotate(25deg);
+    opacity:0.18;
+}
+.card::after{
+    content:'';
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    bottom:-50px;
+    left:-40px;
+    background:rgba(255,255,255,0.5);
+    filter:blur(20px);
+}
+/* ================= CARD COLORS LAYANAN BAHASA================= */
+.card.pink::before{
+    background:#ffb8d2;
+}
+.card.yellow::before{
+    background:#ffe3a1;
+}
+.card.green::before{
+    background:#c9f0bb;
+}
+.card.purple::before{
+    background:#dcc5ff;
+}
+/* ================= ICON DI CARD LAYANAN BAHASA ================= */
+.icon{
+    width:82px;
+    height:82px;
+    border-radius:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:38px;
+    margin-bottom:26px;
+    position:relative;
+    z-index:2;
+}
+.icon{
+    margin-top:40px;
+}
+.icon.pink{
+    background:#ffe1ec;
+}
+.icon.yellow{
+    background:#fff0cb;
+}
+.icon.green{
+    background:#e3f7dd;
+}
+.icon.purple{
+    background:#efe2ff;
+}
+/* ================= CARD TEXT LAYANAN BAHASA ================= */
+.card-label{
+    position:absolute;
+    top:18px;
+    left:28px;
+    padding:10px 16px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:600;
+    background:rgba(255,255,255,0.7);
+    color:#b10846;
+    z-index:5;
+}
+.card h3{
+    color:#b10846;
+    margin-bottom:15px;
+    font-size:25px;
+    line-height:1.35;
+    position:relative;
+    z-index:2;
+}
+.card p{
+    line-height:1.95;
+    color:#666;
+    font-size:14px;
+    position:relative;
+    z-index:2;
+}
+/* ================= INFO 1 ================= */
+.showcase{
+    width:88%;
+    margin:90px auto 0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+.showcase-image{
+    position:relative;
+}
+.showcase-image img{
+    width:100%;
+    min-height:500px;
+    object-fit:cover;
+    border-radius:35px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+.floating-panel{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    width:85%;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(18px);
+    border-radius:28px;
+    padding:22px;
+}
+.panel-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+.panel-top h4{
+    color:white;
+    font-size:22px;
+}
+.live-dot{
+    width:12px;
+    height:12px;
+    background:#7dff93;
+    border-radius:50%;
+    box-shadow:0 0 15px #7dff93;
+}
+.panel-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+.stat-box{
+    background:rgba(255,255,255,0.18);
+    padding:16px;
+    border-radius:18px;
+    text-align:center;
+}
+.stat-box h3{
+    color:white;
+    font-size:22px;
+}
+.stat-box p{
+    color:white;
+    font-size:12px;
+}
+/* ================ INFO 1 KOTAK LIVE GOYANG ================= */
+.floating-panel{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    width:85%;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:28px;
+    padding:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    animation:float 5s ease-in-out infinite;
+}
+/* ================= TEXT INFO 1 KANAN ================= */
+.showcase-content h2{
+    font-size:45px;
+    color:#5a0b24;
+    margin-bottom:20px;
+}
+.showcase-content p{
+    line-height:2;
+    color:#666;
+    margin-bottom:35px;
+}
+.feature-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+.feature-item{
+    background:white;
+    padding:20px;
+    border-radius:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+.feature-item:hover{
+    transform:translateY(-6px);
+}
+/* ================= JADWAL PROGRAM ================= */
+
+.agenda-section{
+    width: 88%;
+    margin: 100px auto 0;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 45px;
+    align-items: start;
+}
+
+/* TITLE */
+.section-title{
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size: 42px;
+    color: #b10846;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.section-title p{
+    color: #666;
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+/* GRID */
+.agenda-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* CARD */
+.agenda-card{
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.06);
+    transition: 0.35s ease;
+    border: 1px solid rgba(177, 8, 70, 0.08);
+    min-height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.agenda-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 30px 55px rgba(0,0,0,0.1);
+}
+
+/* TIME */
+.agenda-card span{
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    background: #ffe1ec;
+    color: #b10846;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    letter-spacing: 0.4px;
+}
+
+/* TITLE */
+.agenda-card h3{
+    color: #b10846;
+    margin-bottom: 14px;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+/* TEXT */
+.agenda-card p{
+    color: #666;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+    .agenda-section{
+        grid-template-columns: 1fr;
+    }
+
+    .section-title{
+        position: static;
+        text-align: center;
+    }
+
+    .agenda-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .agenda-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2{
+        font-size: 34px;
+    }
+
+    .agenda-card{
+        padding: 25px;
+    }
+
+}
+/* ================= PENGGUNA YANG BISA PAKE ================= */
+
+.users-section{
+    width:88%;
+    margin:90px auto 120px;
+}
+
+/* TITLE */
+.users-section .section-title{
+    margin-bottom:45px;
+    position:static;
+}
+
+.users-section .section-title h2{
+    font-size:52px;
+    color:#b10846;
+    margin-bottom:18px;
+    line-height:1.15;
+}
+
+.users-section .section-title p{
+    color:#666;
+    font-size:17px;
+    line-height:1.9;
+    max-width:700px;
+}
+
+/* GRID */
+.users-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+/* CARD */
+.user-item{
+    background:white;
+    border-radius:28px;
+    padding:15px 5px;
+
+    text-align:center;
+    font-weight:600;
+    font-size:18px;
+    color:#b10846;
+
+    box-shadow:0 12px 30px rgba(0,0,0,0.05);
+
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+
+    min-height:100px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* EFFECT */
+.user-item::before{
+    content:'';
+    position:absolute;
+
+    width:120%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+
+    top:0;
+    left:-120%;
+    transition:0.8s;
+}
+
+.user-item:hover::before{
+    left:120%;
+}
+
+.user-item:hover{
+    transform:translateY(-8px);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .users-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .users-grid{
+        grid-template-columns:1fr;
+    }
+
+    .users-section .section-title h2{
+        font-size:38px;
+    }
+
+}
+/* ================= CARA MENGGUNAKAN LAYANAN ================= */
+.steps-section{
+    width:88%;
+    margin:90px auto 120px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+.steps-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.step-card{
+    background:linear-gradient(
+        135deg,
+        #fff,
+        #fff4f8
+    );
+    border-radius:30px;
+    padding:45px 35px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.4s;
+}
+.step-card:hover{
+    transform:translateY(-10px);
+}
+.step-card h3{
+    font-size:48px;
+    color:#c90b4f;
+    margin-bottom:18px;
+    font-family:Georgia, serif;
+}
+.step-card p{
+    color:#666;
+    line-height:1.9;
+    font-size:14px;
+}
+/* ================= GALLERI KEGIATAN ================= */
+.gallery-section{
+    width:88%;
+    margin:90px auto 0;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+.gallery-grid img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:28px;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+.gallery-grid img:hover{
+    transform:scale(1.04) rotate(-1deg);
+}
+/* ================= TESTIMONI PENGGUNA ================= */
+.testimonial-section{
+    width:88%;
+    margin:90px auto 0;
+}
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+.testimonial-card{
+    background:white;
+    border-radius:30px;
+    padding:35px;
+    position:relative;
+    box-shadow:0 12px 30px rgba(0,0,0,0.05);
+    transition:0.4s;
+}
+.testimonial-card:hover{
+    transform:translateY(-8px);
+}
+.testimonial-card::before{
+    content:'“';
+    position:absolute;
+    top:15px;
+    left:25px;
+    font-size:70px;
+    color:#ffe1ec;
+    font-family:Georgia, serif;
+}
+.testimonial-card p{
+    color:#666;
+    line-height:2;
+    margin-bottom:25px;
+    position:relative;
+    z-index:2;
+}
+.testimonial-card h4{
+    color:#b10846;
+    font-size:15px;
+}
+/* ================= CLOSING ================= */
+.highlight{
+    width:88%;
+    margin:80px auto 80px;
+
+    background:linear-gradient(135deg,#c90b4f,#8e0938);
+    border-radius:40px;
+
+    padding:45px 50px;
+
+    color:white;
+    position:relative;
+    overflow:hidden;
+
+    min-height:auto;
+}
+.highlight::before{
+    content:'';
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    top:-100px;
+    right:-70px;
+}
+.highlight h2{
+    font-size:40px;
+    margin-bottom:18px;
+}
+
+.highlight p{
+    max-width:750px;
+    line-height:1.8;
+    font-size:15px;
+    margin-bottom:28px;
+}
+.highlight-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+.highlight-buttons a{
+    text-decoration:none;
+    padding:15px 28px;
+    border-radius:18px;
+    font-weight:600;
+    transition:0.3s;
+}
+.highlight-buttons .primary{
+    background:#ffe4a8;
+    color:#8e0938;
+}
+.highlight-buttons .secondary{
+    background:rgba(255,255,255,0.12);
+    color:white;
+    border:1px solid rgba(255,255,255,0.2);
+}
+.highlight-buttons a:hover{
+    transform:translateY(-5px);
+}
+/* ================= FLOATING WHSPY ================= */
+.floating-maskot{
+    position:fixed;
+    right:30px;
+    bottom:25px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    z-index:9999;
+    animation:float 3s ease-in-out infinite;
+}
+.floating-maskot img{
+    width:70px;
+}
+/* ================= RESPONSIVE ================= */
+@media(max-width:1100px){
+    .showcase{
+        grid-template-columns:1fr;
+    }
+    .agenda-grid,
+    .testimonial-grid{
+        grid-template-columns:1fr;
+    }
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .steps-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+.testimonial-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+}
+@media(max-width:768px){
+    .users-grid{
+        grid-template-columns:1fr;
+    }
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+    .steps-grid{
+        grid-template-columns:1fr;
+    }
+    .feature-list{
+        grid-template-columns:1fr;
+    }
+    .showcase-content h2{
+        font-size:38px;
+    }
+    .highlight h2{
+        font-size:38px;
+    }
+	.testimonial-grid{
+    grid-template-columns:1fr;
+}
+}
+@media(max-width:650px){
+    .floating-panel{
+        width:calc(100% - 40px);
+        left:20px;
+        bottom:20px;
+    }
+    .panel-stats{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#C31149;
+    color:white;
+    padding:85px 6% 35px;
+    position:relative;
+    overflow:hidden;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    align-items:flex-start;
+}
+
+/* ========= LOGO ========= */
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.circle{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    background:transparent;
+    flex-shrink:0;
+}
+
+.circle:hover{
+    transform:rotate(10deg) scale(1.08);
+}
+
+.circle img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+    display:block;
+}
+
+.footer-logo h3{
+    font-size:26px;
+    margin-bottom:4px;
+}
+
+.footer-tagline{
+    color:#ffe0ea;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.footer-desc{
+    color:#ffe6ee;
+    line-height:1.8;
+    margin-bottom:28px;
+    text-align: justify;
+}
+
+
+/* ========= SOSMED ========= */
+
+.social-title{
+    color:#F3D9B1;
+    margin-bottom:16px;
+    font-weight:600;
+    font-size:17px;
+}
+
+.socials{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:24px;
+    background:#F3D9B1;
+    color:#C31149;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ANIMASI SOSMED */
+
+.socials a::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    top:100%;
+    left:0;
+    transition:0.4s;
+    z-index:0;
+}
+
+.socials a:hover::before{
+    top:0;
+}
+
+.socials a i{
+    position:relative;
+    z-index:2;
+}
+
+.socials a:hover{
+    transform:translateY(-8px) rotate(10deg) scale(1.08);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ========= TITLE ========= */
+
+.footer-title{
+    color:#F3D9B1;
+    margin-bottom:22px;
+    font-size:22px;
+}
+
+/* ========= LINKS ========= */
+
+.footer-links a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    margin-bottom:14px;
+    transition:0.35s;
+}
+
+.footer-links a:hover{
+    color:#F3D9B1;
+    transform:translateX(8px);
+}
+
+/* ========= INFO ========= */
+
+.footer-info p{
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ffe6ee;
+}
+
+/* ========= MAP ========= */
+
+iframe{
+    width:100%;
+    border:none;
+    border-radius:20px;
+    margin-top:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ========= CONTACT ========= */
+
+.contact-box{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.contact-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#F3D9B1;
+    color:#C31149;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    transition:0.35s;
+}
+
+.contact-item:hover .contact-icon{
+    transform:rotate(10deg) scale(1.1);
+    background:white;
+}
+
+/* ========= COPYRIGHT ========= */
+
+.copyright{
+    text-align:center;
+    margin-top:65px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    color:#ffe2eb;
+    font-size:15px;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:768px){
+
+.footer-container{
+    gap:40px;
+}
+
+.footer-logo{
+    align-items:flex-start;
+}
+
+.socials{
+    justify-content:flex-start;
+}
+
+}
+
+</style>
+</head>
+<body>
+<div class="bg-circle1"></div>
+<div class="bg-circle2"></div>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+<div class="logo-area">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo Whisperia">
+    </div>
+
+    <div class="logo-text">
+        <h2><span>W</span>hisperia Library</h2>
+        <p>WHERE KNOWLEDGE FEELS LIKE HOME</p>
+    </div>
+
+</div>
+
+<!-- Navbar -->
+    <nav>
+        <ul>
+
+            <!-- BERANDA -->
+			<li>
+                <a href="home.html">Beranda</a>
+			</li>
+				
+            <!-- PROFIL -->
+            <li class="dropdown">
+                <a href="halaman8.html">Profil ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="sejarah.html">Sejarah</a>
+                    <a href="visimisi.html">Visi & Misi</a>
+                    <a href="strukturorganisasi.html">Struktur Organisasi</a>
+                    <a href="maskotperpustakaan.html">Maskot Perpustakaan</a>
+                </div>
+            </li>
+			
+			<!-- KOLEKSI -->
+            <li><a href="koleksi.html">Koleksi</a>
+			</li>
+
+            <!-- LAYANAN -->
+            <li class="dropdown">
+                <a href="opening layanan.html">Layanan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="opac.html">OPAC</a>
+                    <a href="layanan 1.html">Layanan Sirkulasi</a>
+                    <a href="layanan 3.html">Layanan Referensi</a>
+                    <a href="Layanan Maker Space Whisperia.html">Layanan Maker Space</a>
+                    <a href="Layanan Bahasa Whisperia.html">Layanan Bahasa</a>
+                </div>
+            </li>
+
+            <!-- BANTUAN -->
+            <li class="dropdown">
+                <a href="opening bantuan.html">Bantuan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="Syarat Pinjam Koleksi Whisperia.html">Syarat Pinjam Koleksi</a>
+                    <a href="Panduan Whisperia.html">Panduan</a>
+                    <a href="FAQ Whisperia.html">FAQ</a>
+                </div>
+            </li>
+
+            <!-- KONTAK -->
+            <li>
+                <a href="CONTACT US TRIAL 24.html">Kontak</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+    <div class="floating-icon icon1">🌍</div>
+    <div class="floating-icon icon2">📚</div>
+    <div class="floating-icon icon3">🎧</div>
+    <div class="floating-icon icon4">🗣️</div>
+    <div class="hero-left">
+        <div class="hero-badge">
+            Language Learning Center • Whisperia Library
+        </div>
+
+        <h1>
+            LANGUAGE
+            <span>LEARNING</span>
+        </h1>
+
+        <p>
+            Ruang belajar bahasa modern di Whisperia Library yang menghadirkan
+            pengalaman belajar interaktif melalui kelas bahasa, conversation club,
+            digital learning, dan eksplorasi budaya internasional.
+        </p>
+
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= MAIN PANEL ================= -->
+
+<div class="main-panel">
+
+<div class="section-title">
+
+    <h2>Layanan Belajar Bahasa</h2>
+
+    <p>
+        Temukan berbagai layanan pembelajaran bahasa yang modern,
+        nyaman, dan interaktif di Whisperia Library.
+    </p>
+
+</div>
+
+<!-- ================= CARD GRID ================= -->
+
+<div class="card-grid">
+
+    <div class="card pink">
+
+        <div class="card-label">
+            LANGUAGE BOOKS
+        </div>
+
+        <div class="icon pink">
+            📚
+        </div>
+
+        <h3>Koleksi Bahasa</h3>
+
+        <p>
+            Novel, grammar book, kamus, TOEFL, IELTS,
+            JLPT, HSK, dan berbagai koleksi bahasa asing modern.
+        </p>
+
+    </div>
+
+    <div class="card yellow">
+
+        <div class="card-label">
+            AUDIO LEARNING
+        </div>
+
+        <div class="icon yellow">
+            🎧
+        </div>
+
+        <h3>Listening Corner</h3>
+
+        <p>
+            Area listening interaktif dengan podcast,
+            pronunciation practice, dan media audio multilingual.
+        </p>
+
+    </div>
+
+    <div class="card green">
+
+        <div class="card-label">
+            LANGUAGE CLASS
+        </div>
+
+        <div class="icon green">
+            💬
+        </div>
+
+        <h3>Interactive Class</h3>
+
+        <p>
+            Kelas bahasa Inggris, Jepang, Korea, Arab,
+            dan Mandarin dengan metode interaktif modern.
+        </p>
+
+    </div>
+
+    <div class="card purple">
+
+        <div class="card-label">
+            SPEAKING CLUB
+        </div>
+
+        <div class="icon purple">
+            🌎
+        </div>
+
+        <h3>Conversation Club</h3>
+
+        <p>
+            Latihan speaking bersama komunitas pembelajar
+            dengan suasana santai dan aktif.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- ================= SHOWCASE ================= -->
+
+<div class="showcase">
+
+    <!-- IMAGE SIDE -->
+
+    <div class="showcase-image">
+
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop" alt="Language Learning">
+
+        <!-- FLOATING PANEL -->
+
+        <div class="floating-panel">
+
+            <div class="panel-top">
+
+                <h4>Language Center Live</h4>
+
+                <div class="live-dot"></div>
+
+            </div>
+
+            <div class="panel-stats">
+
+                <div class="stat-box">
+                    <h3>40+</h3>
+                    <p>Interactive Class</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>300+</h3>
+                    <p>Active Learners</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>24/7</h3>
+                    <p>Digital Access</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT SIDE -->
+
+    <div class="showcase-content">
+
+        <h2>
+            Belajar Bahasa dengan Pengalaman yang Lebih Interaktif
+        </h2>
+
+        <p>
+            Whisperia Library menghadirkan pengalaman belajar bahasa
+            yang modern, nyaman, dan immersive melalui kombinasi teknologi digital,
+            komunitas aktif, dan eksplorasi budaya internasional.
+        </p>
+
+        <div class="feature-list">
+
+            <div class="feature-item">
+                🌍 Community speaking & language exchange
+            </div>
+
+            <div class="feature-item">
+                🎧 Pronunciation & listening practice
+            </div>
+
+            <div class="feature-item">
+                🎬 Cultural movie & discussion session
+            </div>
+
+            <div class="feature-item">
+                💻 AI-powered digital language learning
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= AGENDA ================= -->
+
+<div class="agenda-section">
+
+    <div class="section-title">
+
+        <h2>Jadwal Program Bahasa</h2>
+
+        <p>
+            Ikuti berbagai kelas, workshop, dan kegiatan pembelajaran bahasa
+            setiap minggunya di Whisperia Library.
+        </p>
+
+    </div>
+
+    <div class="agenda-grid">
+
+        <div class="agenda-card">
+
+            <span>Senin • 15.00 WIB</span>
+
+            <h3>English Conversation Club</h3>
+
+            <p>
+                Latihan speaking dan public conversation bersama tutor interaktif.
+            </p>
+
+        </div>
+
+        <div class="agenda-card">
+
+            <span>Rabu • 16.00 WIB</span>
+
+            <h3>Japanese Cultural Class</h3>
+
+            <p>
+                Belajar bahasa Jepang melalui anime, budaya,
+                dan percakapan sehari-hari.
+            </p>
+
+        </div>
+
+        <div class="agenda-card">
+
+            <span>Sabtu • 13.00 WIB</span>
+
+            <h3>Korean Movie Session</h3>
+
+            <p>
+                Belajar vocabulary dan listening melalui film
+                serta drama Korea interaktif.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= WHO CAN USE ================= -->
+
+<div class="users-section">
+
+    <div class="section-title">
+
+        <h2>Siapa yang Bisa Menggunakan?</h2>
+
+        <p>
+            Layanan belajar bahasa terbuka untuk seluruh komunitas pembelajar.
+        </p>
+
+    </div>
+
+    <div class="users-grid">
+
+        <div class="user-item">👩‍🎓 Mahasiswa</div>
+
+        <div class="user-item">📚 Pelajar</div>
+
+        <div class="user-item">👨‍🏫 Dosen</div>
+
+        <div class="user-item">🌎 Komunitas Bahasa</div>
+
+        <div class="user-item">💼 Profesional</div>
+
+        <div class="user-item">✈️ Calon Mahasiswa Abroad</div>
+
+    </div>
+
+</div>
+
+<!-- ================= STEPS ================= -->
+
+<div class="steps-section">
+
+    <div class="section-title">
+
+        <h2>Cara Menggunakan Layanan</h2>
+
+        <p>
+            Akses layanan belajar bahasa dengan langkah yang mudah dan praktis.
+        </p>
+
+    </div>
+
+    <div class="steps-grid">
+
+        <div class="step-card">
+
+            <h3>01</h3>
+
+            <p>
+                Registrasi sebagai anggota Whisperia Library.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>02</h3>
+
+            <p>
+                Pilih program bahasa atau kelas yang diinginkan.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>03</h3>
+
+            <p>
+                Datang langsung atau akses kelas digital online.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <h3>04</h3>
+
+            <p>
+                Tingkatkan skill bahasa dan raih sertifikat pembelajaran.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= GALLERY ================= -->
+
+<div class="gallery-section">
+
+    <div class="section-title">
+
+        <h2>Galeri Kegiatan Bahasa</h2>
+
+        <p>
+            Dokumentasi aktivitas belajar bahasa dan komunitas internasional
+            di Whisperia Library.
+        </p>
+
+    </div>
+
+    <div class="gallery-grid">
+
+        <img src="bahasa1.jpeg">
+
+        <img src="bahasa2.jpeg">
+
+        <img src="bahasa3.jpeg">
+
+        <img src="bahasa4.jpeg">
+
+    </div>
+
+</div>
+
+<!-- ================= TESTIMONI ================= -->
+
+<div class="testimonial-section">
+
+    <div class="section-title">
+
+        <h2>Testimoni Pengguna</h2>
+
+        <p>
+            Pengalaman belajar bahasa dari pengguna Whisperia Library
+            dari berbagai komunitas internasional.
+        </p>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <!-- ENGLISH -->
+
+        <div class="testimonial-card">
+
+            <p>
+                “The conversation club helped me improve my confidence
+                in speaking English naturally and comfortably.”
+            </p>
+
+            <h4>— English Learner</h4>
+
+        </div>
+
+        <!-- ARABIC -->
+
+        <div class="testimonial-card">
+
+            <p style="direction:rtl; text-align:right;">
+                "ساعدتني جلسات تعلم اللغة في تطوير مهارات التحدث
+                والاستماع بطريقة ممتعة وحديثة."
+            </p>
+
+            <h4 style="text-align:right;">
+                — متعلم اللغة العربية
+            </h4>
+
+        </div>
+
+        <!-- JAPANESE -->
+
+        <div class="testimonial-card">
+
+            <p>
+                「映画セッションのおかげで、日本語の
+                リスニング力が大きく向上しました。」
+            </p>
+
+            <h4>— 日本語学習者</h4>
+
+        </div>
+
+        <!-- MANDARIN -->
+
+        <div class="testimonial-card">
+
+            <p>
+                “这里的语言学习环境非常舒适，
+                让我更有信心练习中文口语。”
+            </p>
+
+            <h4>— 中文学习者</h4>
+
+        </div>
+
+    </div>
+
+</div>
+<section>
+<!-- ================= HIGHLIGHT ================= -->
+
+<div class="highlight">
+
+    <h2>
+        Explore Languages, Explore The World
+    </h2>
+
+    <p>
+        Whisperia Library menghadirkan ruang belajar bahasa yang inspiratif,
+        modern, dan interaktif untuk membantu generasi muda meningkatkan
+        kemampuan komunikasi global dan literasi internasional.
+    </p>
+
+    <div class="highlight-buttons">
+
+        <a href="https://forms.gle/9vcVxW42XDCNb6y79" class="primary">
+            Daftar Program
+        </a>
+
+        <a href="CONTACT US TRIAL 24.html" class="secondary">
+            Hubungi Pustakawan
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- ================= FLOATING MASKOT ================= -->
+
+<div class="floating-maskot">
+
+    <img src="image.png" alt="Maskot">
+
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<!-- ========= KOLOM 1 ========= -->
+
+<div>
+
+<div class="footer-logo">
+
+<!-- LOGO -->
+<div class="circle">
+
+
+
+<img src="logo.png">
+
+
+
+</div>
+
+<div>
+
+<h3>Whisperia Library</h3>
+
+<p class="footer-tagline">
+WHERE KNOWLEDGE FEELS LIKE HOME
+</p>
+
+</div>
+
+</div>
+
+<p class="footer-desc">
+Perpustakaan modern yang menyediakan akses informasi,
+koleksi pengetahuan, ruang belajar nyaman,
+serta layanan digital inspiratif bagi seluruh pengunjung.
+</p>
+
+</div>
+
+<!-- ========= KOLOM 2 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Jam Operasional
+</h3>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Senin - Jumat : 08.00 - 20.00
+</p>
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Sabtu : 09.00 - 17.00
+</p>
+
+</div>
+
+<br>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+Jl. Tembalang Selatan III No.60, Pedalangan, Banyumanik, Kota Semarang, Jawa Tengah
+</p>
+
+</div>
+
+<iframe src="https://maps.google.com/maps?q=Jl.%20Tembalang%20Selatan%20III%20No.%2060,%20Pedalangan,%20Banyumanik,%20Kota%20Semarang,%20Jawa%20Tengah&t=&z=17&ie=UTF8&iwloc=&output=embed"
+width="100%" 
+  height="200" 
+  style="border:0; border-radius: 4px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</div>
+
+<!-- ========= KOLOM 3 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Quick Links
+</h3>
+
+<div class="footer-links">
+
+<a href="Syarat Pinjam Koleksi Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Syarat Pinjam Koleksi
+</a>
+
+<a href="FAQ Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+FAQ
+</a>
+
+</div>
+
+<br>
+
+<h3 class="footer-title">
+Daftar Layanan
+</h3>
+
+<div class="footer-links">
+
+<a href="layanan 1.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Sirkulasi
+</a>
+
+<a href="layanan 3.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Referensi
+</a>
+
+<a href="Layanan Maker Space Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Maker Space
+</a>
+
+<a href="Layanan Bahasa Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Bahasa
+</a>
+
+</div>
+
+</div>
+
+<!-- ========= KOLOM 4 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Kontak Kami
+</h3>
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<p>whisperialibrary@gmail.com</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<p>+62 895 1221 8040</p>
+</div>
+
+</div>
+
+<div class="social-title">
+Sosial Media Kami
+</div>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/whisperia.libs?igsh=eGVkNnFmOHl4YjI4"
+target="_blank"
+class="instagram">
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="https://www.tiktok.com/@whisperialibs?_r=1&_t=ZS-96DiwBWRsjE"
+target="_blank"
+class="tiktok">
+
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://youtube.com/@whispiee?si=dSfwmZYw-iuWT4tF"
+target="_blank"
+class="youtube">
+
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="copyright">
+
+© 2026 Whisperia Library — All Rights Reserved
+
+</div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Koleksi Whisperia Library</title>
+
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f6f6f6;
+    color:#333;
+}
+
+/* ================= HEADER ================= */
+header{
+    width:100%;
+    background:#C31149;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#F3D9B1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.logo-text h2{
+    color:white;
+    font-size:30px;
+    font-family:'Cinzel',serif;
+}
+.logo-text h2 span{
+    color:#F3D9B1;
+    font-size:38px;
+	    font-family:'Cinzel',serif;
+}
+.logo-text p{
+    color:#ffe2eb;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+align-items:center;
+}
+
+nav ul li{
+position:relative;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+padding:10px 0;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+nav ul li a:hover{
+color:#F3D9B1;
+}
+
+/* GARIS BAWAH ANIMASI */
+nav ul li a{
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+
+width:0%;
+height:3px;
+
+background:#F3D9B1;
+border-radius:10px;
+
+transition:0.35s ease;
+}
+
+/* SAAT DI HOVER */
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MENU YANG SEDANG AKTIF */
+nav ul li a.active::after{
+width:100%;
+}
+
+nav ul li a.active{
+color:#F3D9B1;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu{
+pointer-events:auto;
+position:absolute;
+top:100%;
+left:0;
+background:white;
+width:270px;
+
+z-index:9999;
+
+border-radius:0 0 16px 16px;
+overflow:hidden;
+
+opacity:0;
+visibility:hidden;
+transform:translateY(15px);
+
+transition:0.35s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+color:#333;
+padding:16px 22px;
+display:block;
+font-size:15px;
+border-bottom:1px solid #f2f2f2;
+transition:0.3s;
+}
+
+.dropdown-menu a:hover{
+background:#C31149;
+color:white;
+padding-left:30px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+/* ================= HERO SECTION ================= */
+
+.hero-contact{
+    width:100%;
+    height:85vh;
+
+    background:
+    linear-gradient(
+    rgba(195,17,73,0.55),
+    rgba(195,17,73,0.45)
+    ),
+
+    url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Overlay tambahan */
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,0.08),
+    transparent 60%);
+}
+
+/* Content */
+.hero-content{
+    position:relative;
+    z-index:2;
+    animation:fadeHero 1.2s ease;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:72px;
+    color:white;
+    font-family:'Playfair Display', serif;
+    margin-bottom:18px;
+    text-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.hero-content p{
+    color:#f5e9df;
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+/* Animasi */
+@keyframes fadeHero{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .hero-contact{
+        height:70vh;
+    }
+
+    .hero-content h1{
+        font-size:48px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+/* =========================
+   HERO COLLECTION
+========================= */
+
+.hero{
+    background:#f3f3f3;
+    padding:50px 6%;
+    margin-top:-40px;
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.1;
+    color:#2d2d2d;
+    font-weight:700;
+}
+
+.hero p{
+    font-size:20px;
+    color:#555;
+    max-width:900px;
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:10px;
+}
+
+.search-box input{
+    flex:1;
+    height:78px;
+
+    padding:0 28px;
+
+    border-radius:20px;
+    border:1px solid #ddd;
+
+    font-size:22px;
+    background:white;
+
+    transition:0.3s;
+}
+
+.search-box input:focus{
+    outline:none;
+    border-color:#c01d4d;
+    box-shadow:0 0 0 4px rgba(192,29,77,0.12);
+}
+
+.search-box button{
+    height:78px;
+    min-width:130px;
+
+    border:none;
+    border-radius:20px;
+
+    background:#c01d4d;
+    color:white;
+
+    font-size:24px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.search-box button:hover{
+    background:#a31540;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE HERO
+========================= */
+
+@media(max-width:768px){
+
+    .hero{
+        padding:35px 6%;
+        margin-top:-20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .search-box{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .search-box input{
+        height:65px;
+        font-size:18px;
+    }
+
+    .search-box button{
+        width:100%;
+        height:65px;
+        font-size:20px;
+    }
+
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    margin:20px auto;
+    padding:0 6%;
+}
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-section{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.filter-section select{
+    width:220px;
+    padding:12px 16px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    background:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.filter-section select:focus{
+    outline:none;
+    border-color:#c01d4d;
+}
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.tab-btn{
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    background:white;
+    color:#c01d4d;
+    font-weight:bold;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover{
+    background:#c01d4d;
+    color:white;
+}
+
+/* =========================
+   TAB CONTENT
+========================= */
+
+.tab-content{
+    display:none;
+}
+
+.tab-content.active{
+    display:block;
+}
+
+/* =========================
+   CARD GRID
+========================= */
+
+.card-grid{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:25px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding:10px 5px 20px;
+
+    margin-top:30px;
+
+    scroll-behavior:smooth;
+}
+
+.card-grid::-webkit-scrollbar{
+    display:none;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:14px;
+    transition:0.35s;
+    cursor:pointer;
+
+    min-width:250px;
+    max-width:250px;
+    flex-shrink:0;
+
+    box-shadow:0 5px 18px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   CARD COVER
+========================= */
+
+.card-cover{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+
+    width:100%;
+    height:320px;
+
+    background:#eee;
+}
+
+.card-cover img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+
+    display:block;
+    transition:0.4s;
+}
+
+.card:hover .card-cover img,
+.collection-card:hover .card-cover img{
+    transform:scale(1.04);
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.genre-badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:#c01d4d;
+    color:white;
+    padding:7px 14px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   CARD INFO
+========================= */
+
+.card-info{
+    padding-top:16px;
+}
+
+.card-info h3{
+    font-size:24px;
+    color:#222;
+    margin-bottom:8px;
+    line-height:1.2;
+}
+
+.author{
+    color:#666;
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.year{
+    color:#c01d4d;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* =========================
+   COLLECTION ROW
+========================= */
+
+.collection-row{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:35px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding-bottom:15px;
+    margin-top:30px;
+    scroll-behavior:smooth;
+}
+
+.collection-row::-webkit-scrollbar{
+    display:none;
+}
+
+.collection-card{
+    min-width:220px;
+    flex-shrink:0;
+    cursor:pointer;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+
+    overflow-y:auto;
+    padding:30px 0;
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    max-width:700px;
+    margin:auto;
+    border-radius:20px;
+    overflow:hidden;
+    animation:fade 0.3s;
+}
+
+.modal img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.modal-body{
+    padding:28px;
+}
+
+.modal-body h2{
+    color:#c01d4d;
+    margin-bottom:18px;
+}
+
+.modal-body p{
+    margin-bottom:12px;
+    line-height:1.7;
+}
+
+.close{
+    float:right;
+    font-size:30px;
+    cursor:pointer;
+    color:#c01d4d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+
+footer{
+    background:#C31149;
+    color:white;
+    padding:85px 0 35px;
+    width:100%;
+}
+
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    align-items:flex-start;
+
+    padding:0 6%;
+}
+
+/* ========= LOGO ========= */
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.circle{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    background:transparent;
+    flex-shrink:0;
+}
+
+.circle:hover{
+    transform:rotate(10deg) scale(1.08);
+}
+
+.circle img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+    display:block;
+}
+
+.footer-logo h3{
+    font-size:26px;
+    margin-bottom:4px;
+}
+
+.footer-tagline{
+    color:#ffe0ea;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.footer-desc{
+    color:#ffe6ee;
+    line-height:1.8;
+    margin-bottom:28px;
+    text-align: justify;
+}
+
+
+/* ========= SOSMED ========= */
+
+.social-title{
+    color:#F3D9B1;
+    margin-bottom:16px;
+    font-weight:600;
+    font-size:17px;
+}
+
+.socials{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:24px;
+    background:#F3D9B1;
+    color:#C31149;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ANIMASI SOSMED */
+
+.socials a::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    top:100%;
+    left:0;
+    transition:0.4s;
+    z-index:0;
+}
+
+.socials a:hover::before{
+    top:0;
+}
+
+.socials a i{
+    position:relative;
+    z-index:2;
+}
+
+.socials a:hover{
+    transform:translateY(-8px) rotate(10deg) scale(1.08);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ========= TITLE ========= */
+
+.footer-title{
+    color:#F3D9B1;
+    margin-bottom:22px;
+    font-size:22px;
+}
+
+/* ========= LINKS ========= */
+
+.footer-links a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    margin-bottom:14px;
+    transition:0.35s;
+}
+
+.footer-links a:hover{
+    color:#F3D9B1;
+    transform:translateX(8px);
+}
+
+/* ========= INFO ========= */
+
+.footer-info p{
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ffe6ee;
+}
+
+/* ========= MAP ========= */
+
+iframe{
+    width:100%;
+    border:none;
+    border-radius:20px;
+    margin-top:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ========= CONTACT ========= */
+
+.contact-box{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.contact-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#F3D9B1;
+    color:#C31149;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    transition:0.35s;
+}
+
+.contact-item:hover .contact-icon{
+    transform:rotate(10deg) scale(1.1);
+    background:white;
+}
+
+/* ========= COPYRIGHT ========= */
+
+.copyright{
+    text-align:center;
+    margin-top:65px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    color:#ffe2eb;
+    font-size:15px;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:768px){
+
+.footer-container{
+    gap:40px;
+}
+
+.footer-logo{
+    align-items:flex-start;
+}
+
+.socials{
+    justify-content:flex-start;
+}
+
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:scale(0.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .card-cover{
+        height:280px;
+    }
+
+    .filter-section select{
+        width:100%;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+<div class="logo-area">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo Whisperia">
+    </div>
+
+    <div class="logo-text">
+        <h2><span>W</span>hisperia Library</h2>
+        <p>WHERE KNOWLEDGE FEELS LIKE HOME</p>
+    </div>
+
+</div>
+
+<!-- Navbar -->
+    <nav>
+        <ul>
+
+            <!-- BERANDA -->
+			<li>
+                <a href="home.html">Beranda</a>
+			</li>
+				
+            <!-- PROFIL -->
+            <li class="dropdown">
+                <a href="halaman8.html">Profil ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="sejarah.html">Sejarah</a>
+                    <a href="visimisi.html">Visi & Misi</a>
+                    <a href="strukturorganisasi.html">Struktur Organisasi</a>
+                    <a href="maskotperpustakaan.html">Maskot Perpustakaan</a>
+                </div>
+            </li>
+			
+			<!-- KOLEKSI -->
+            <li><a href="koleksi.html">Koleksi</a>
+			</li>
+
+            <!-- LAYANAN -->
+            <li class="dropdown">
+                <a href="opening layanan.html">Layanan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="opac.html">OPAC</a>
+                    <a href="layanan 1.html">Layanan Sirkulasi</a>
+                    <a href="layanan 3.html">Layanan Referensi</a>
+                    <a href="Layanan Maker Space Whisperia.html">Layanan Maker Space</a>
+                    <a href="Layanan Bahasa Whisperia.html">Layanan Bahasa</a>
+                </div>
+            </li>
+
+            <!-- BANTUAN -->
+            <li class="dropdown">
+                <a href="opening bantuan.html">Bantuan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="Syarat Pinjam Koleksi Whisperia.html">Syarat Pinjam Koleksi</a>
+                    <a href="Panduan Whisperia.html">Panduan</a>
+                    <a href="FAQ Whisperia.html">FAQ</a>
+                </div>
+            </li>
+
+            <!-- KONTAK -->
+            <li>
+                <a href="CONTACT US TRIAL 24.html">Kontak</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero-contact">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Digital Library Collection</h1>
+        <p>
+            Temukan berbagai koleksi buku, jurnal, skripsi, audio, video, dan ebook digital secara mudah.
+        </p>
+    </div>
+
+</section>
+
+    <div class="search-box">
+
+        <input type="text" placeholder="Cari koleksi...">
+
+        <button>
+            Cari
+        </button>
+
+    </div>
+</div>
+
+<!-- CONTAINER -->
+
+<div class="container"> 
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<button class="tab-btn active" onclick="openTab(event,'buku')">
+Koleksi Buku
+</button>
+
+<button class="tab-btn" onclick="openTab(event,'digital')">
+Koleksi Digital
+</button>
+
+<button class="tab-btn" onclick="openTab(event,'jurnal')">
+Koleksi Jurnal
+</button>
+
+<button class="tab-btn" onclick="openTab(event,'skripsi')">
+Koleksi Skripsi
+</button>
+
+<button class="tab-btn" onclick="openTab(event,'ebook')">
+Koleksi E-Book
+</button>
+
+</div>
+
+<!-- KOLEKSI BUKU -->
+
+<div id="buku" class="tab-content active">
+
+<!-- FILTER KHUSUS KOLEKSI BUKU -->
+
+<div class="filter-section">
+
+    <select class="filter-genre">
+        <option value="all">Semua Genre</option>
+        <option value="Fiksi">Fiksi</option>
+        <option value="Edukasi">Edukasi</option>
+        <option value="Psikologi">Psikologi</option>
+        <option value="Sejarah">Sejarah</option>
+        <option value="Keuangan">Keuangan</option>
+        <option value="Sastra">Sastra</option>
+        <option value="Drama">Drama</option>
+        <option value="Anak-anak">Anak-anak</option>
+    </select>
+
+    <select class="filter-year">
+        <option value="all">Semua Tahun</option>
+        <option value="2000-2010">2000 - 2010</option>
+        <option value="2011-2015">2011 - 2015</option>
+        <option value="2016-2020">2016 - 2020</option>
+        <option value="2021-2030">2021 - 2030</option>
+    </select>
+
+</div>
+
+<div class="card-grid">
+
+<!-- CARD -->
+
+<div class="card"
+
+data-genre="Fiksi"
+data-year="2005"
+
+onclick="showModal(
+'Laskar Pelangi',
+'Andrea Hirata',
+'Bentang Pustaka',
+'2005',
+'Yogyakarta',
+'979-3062-79-7',
+'Novel perjuangan anak-anak Belitung dalam memperoleh pendidikan.',
+'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop'
+)">
+<div class="card-cover">
+
+    <div class="genre-badge">
+        Fiksi
+    </div>
+
+    <img src="laskarpelangi.jpg">
+
+</div>
+
+<div class="card-info">
+
+    <h3>Laskar Pelangi</h3>
+
+    <p class="author">
+        Andrea Hirata
+    </p>
+
+    <p class="year">
+        Terbit • 2005
+    </p>
+
+</div>
+
+</div>
+
+<div class="card"
+
+data-genre="Fiksi"
+data-year="2014"
+
+onclick="showModal(
+'Bumi',
+'Tere Liye',
+'Gramedia',
+'2014',
+'Jakarta',
+'9786020301121',
+'Novel fantasi dunia paralel.',
+'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=1200&auto=format&fit=crop'
+)">
+
+<div class="card-cover">
+    <div class="genre-badge">
+        Fiksi
+    </div>
+    <img src="bumi.jpg">
+</div>
+<div class="card-info">
+    <h3>Bumi</h3>
+    <p class="author">
+        Tere Liye
+    </p>
+    <p class="year">
+        Terbit • 2014
+    </p>
+</div>
+</div>
+
+<div class="card"
+
+data-genre="Psikologi"
+data-year="2018"
+
+onclick="showModal(
+'Filosofi Teras',
+'Henry Manampiring',
+'Kompas',
+'2018',
+'Jakarta',
+'9786024125181',
+'Pengenalan filsafat stoikisme.',
+'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1200&auto=format&fit=crop'
+)">
+
+<div class="card-cover">
+    <div class="genre-badge">
+        Psikologi
+    </div>
+    <img src="filosofiteras.jpg">
+</div>
+<div class="card-info">
+    <h3>Filosofi Teras</h3>
+    <p class="author">
+        Henry Manampiring
+    </p>
+    <p class="year">
+        Terbit • 2018
+    </p>
+</div>
+</div>
+
+<div class="card"
+
+data-genre="Sejarah"
+data-year="2011"
+
+onclick="showModal(
+'Sapiens',
+'Yuval Noah Harari',
+'Harvill Secker',
+'2011',
+'London',
+'9780099590088',
+'Sejarah evolusi manusia.',
+'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop'
+)">
+
+<div class="card-cover">
+    <div class="genre-badge">
+        Sejarah
+    </div>
+    <img src="sapiens.jpg">
+</div>
+<div class="card-info">
+    <h3>Sapiens</h3>
+    <p class="author">
+        Yuval Noah Harari
+    </p>
+    <p class="year">
+        Terbit • 2011
+    </p>
+</div>
+</div>
+
+<div class="card"
+
+data-genre="Keuangan"
+data-year="2020"
+
+onclick="showModal(
+'The Psychology of Money',
+'Morgan Housel',
+'Harriman House',
+'2020',
+'London',
+'9780857197689',
+'Cara berpikir sehat tentang uang.',
+'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=1200&auto=format&fit=crop'
+)">
+
+<div class="card-cover">
+    <div class="genre-badge">
+        Keuangan
+    </div>
+    <img src="money.jpg">
+</div>
+<div class="card-info">
+    <h3>The Psychology of Money</h3>
+    <p class="author">
+        Morgan Housel 
+    </p>
+    <p class="year">
+        Terbit • 2020
+    </p>
+</div>
+</div>
+
+<div class="card"
+
+data-genre="Anak-anak"
+data-year="2025"
+
+onclick="showModal(
+'Kumpulan Cerita Anak: Aku Cinta Budaya Indonesia',
+'Rokhmat Gioramadhita, Diyah Ayu Retnoningsih',
+'Checklist',
+'2025',
+'Jakarta',
+'9786238114894',
+'Buku ini berisi kumpulan cerita mengenai budaya dan keunikan Indonesia',
+'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop'
+)">
+<div class="card-cover">
+
+    <div class="genre-badge">
+        Anak-anak
+    </div>
+
+    <img src="anak.jpeg">
+
+</div>
+
+<div class="card-info">
+
+    <h3>Kumpulan Cerita Anak: Aku Cinta Budaya Indonesia</h3>
+
+    <p class="author">
+        Rokhmat Gioramadhita, Diyah Ayu Retnoningsih
+	</p>
+
+    <p class="year">
+        Terbit • 2025
+    </p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- KOLEKSI DIGITAL -->
+
+<div id="digital" class="tab-content">
+
+<div class="filter-section">
+
+<select class="filter-genre">
+    <option value="all">Semua Format</option>
+    <option value="Video">Video</option>
+    <option value="Audio">Audio</option>
+    <option value="Podcast">Podcast</option>
+    <option value="Dokumenter">Dokumenter</option>
+</select>
+
+<select class="filter-year">
+    <option value="all">Semua Tahun</option>
+    <option value="2000-2010">2000 - 2010</option>
+    <option value="2011-2015">2011 - 2015</option>
+    <option value="2016-2020">2016 - 2020</option>
+    <option value="2021-2030">2021 - 2030</option>
+</select>
+
+</div>
+
+<!-- =========================
+KOLEKSI VIDEO 1
+========================= -->
+
+<div class="card-grid">
+
+<div class="card"
+
+data-genre="Video"
+data-year="2024"
+
+onclick="showModal(
+'Vidio Pendek Hak dan Kewajiban Negara dan Warga Negara',
+'Whisperia Library',
+'YouTube',
+'2026',
+'Semarang',
+'-',
+'Video edukasi mengenai praktik pelaksanaan hak dan kewajiban oleh negara dan warga negara.',
+'https://img.youtube.com/vi/FxNcfhRYqAQ/maxresdefault.jpg'
+)">
+
+<div class="card-cover">
+
+<div class="genre-badge">
+Video
+</div>
+
+<img src="https://img.youtube.com/vi/FxNcfhRYqAQ/maxresdefault.jpg">
+
+</div>
+
+<div class="card-info">
+
+<h3>Vidio Pendek Hak dan Kewajiban Negara dan Warga Negara</h3>
+
+<p class="author">
+Whisperia Library
+</p>
+
+<p class="year">
+Rilis • 2026
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+KOLEKSI VIDEO 2
+========================= -->
+
+<div class="card"
+
+data-genre="Video"
+data-year="2023"
+
+onclick="showModal(
+'Video Pembelajaran Perkenalan Bahasa Inggris',
+'Whisperia Library',
+'YouTube',
+'2026',
+'Semarang',
+'-',
+'Video pembelajaran mengenai penggunaan Bahasa Inggris dalam memperkenalkan orang lain.',
+'video2.jpeg'
+)">
+
+<div class="card-cover">
+
+<div class="genre-badge">
+Video
+</div>
+
+<img src="video2.jpeg">
+
+</div>
+
+<div class="card-info">
+
+<h3>Video Pembelajaran Perkenalan Bahasa Inggris</h3>
+
+<p class="author">
+Whisperia Library
+</p>
+
+<p class="year">
+Rilis • 2026
+</p>
+
+</div>
+
+</div>
+
+<!-- =========================
+KOLEKSI AUDIO 1
+TARUH MENGGANTIKAN AUDIO PERTAMA
+========================= -->
+
+<div class="card"
+
+data-genre="Audio"
+data-year="2018"
+
+onclick="showModal(
+'Atomic Habits Audiobook',
+'James Clear',
+'Avery Publishing',
+'2018',
+'New York',
+'9780735211292',
+'Audiobook pengembangan diri tentang membangun kebiasaan baik dan menghilangkan kebiasaan buruk.',
+'https://t4.ftcdn.net/jpg/01/90/49/35/360_F_190493526_VjnnfO3k8ewI54JEeCY5OSwabGEkiEU3.jpg'
+)">
+
+<div class="card-cover">
+
+<div class="genre-badge">
+Audio
+</div>
+
+<img src="https://m.media-amazon.com/images/I/81wgcld4wxL.jpg">
+
+</div>
+
+<div class="card-info">
+
+<h3>Atomic Habits</h3>
+
+<p class="author">
+James Clear
+</p>
+
+<p class="year">
+Rilis • 2018
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+KOLEKSI AUDIO 2
+TARUH MENGGANTIKAN AUDIO KEDUA
+========================= -->
+
+<div class="card"
+
+data-genre="Audio"
+data-year="2005"
+
+onclick="showModal(
+'Laskar Pelangi Audiobook',
+'Andrea Hirata',
+'Bentang Pustaka',
+'2005',
+'Yogyakarta',
+'9793062797',
+'Audiobook novel inspiratif tentang perjuangan anak-anak Belitung dalam memperoleh pendidikan.',
+'https://t4.ftcdn.net/jpg/01/90/49/35/360_F_190493526_VjnnfO3k8ewI54JEeCY5OSwabGEkiEU3.jpg'
+)">
+
+<div class="card-cover">
+
+<div class="genre-badge">
+Audio
+</div>
+
+<img src="https://upload.wikimedia.org/wikipedia/id/8/8e/Laskar_pelangi_sampul.jpg">
+
+</div>
+
+<div class="card-info">
+
+<h3>Laskar Pelangi</h3>
+
+<p class="author">
+Andrea Hirata
+</p>
+
+<p class="year">
+Rilis • 2005
+</p>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+<!-- JURNAL -->
+
+<div id="jurnal" class="tab-content">
+
+<!-- FILTER JURNAL -->
+
+<div class="filter-section">
+
+<select class="filter-genre">
+    <option value="all">Semua Topik</option>
+    <option value="Teknologi">Teknologi</option>
+    <option value="Pendidikan">Pendidikan</option>
+    <option value="Perpustakaan">Perpustakaan</option>
+    <option value="Budaya">Budaya</option>
+</select>
+
+<select class="filter-year">
+    <option value="all">Semua Tahun</option>
+    <option value="2000-2010">2000 - 2010</option>
+    <option value="2011-2015">2011 - 2015</option>
+    <option value="2016-2020">2016 - 2020</option>
+    <option value="2021-2030">2021 - 2030</option>
+</select>
+
+</div>
+
+<!-- =========================
+KOLEKSI JURNAL 1
+TARUH MENGGANTIKAN CARD JURNAL PERTAMA
+========================= -->
+
+<div class="card-grid">
+<div class="card"
+
+data-genre="Pendidikan"
+data-year="2014"
+
+onclick="showModal(
+'BIONATURE: Jurnal Kajian, Penelitian, dan Pengajaran Biologi',
+'Tim Editorial BIONATURE',
+'Universitas Negeri Makassar',
+'2014',
+'Makassar',
+'-',
+'Jurnal ilmiah yang membahas penelitian dan pengajaran di bidang biologi serta pendidikan biologi.',
+'https://sevima.com/wp-content/uploads/2019/02/Jurnal-imiah.jpg'
+)">
+
+<div class="card-cover">
+<img src="bio.jpeg">
+</div>
+
+<div class="card-info">
+<h3>BIONATURE</h3>
+<p>Jurnal Biologi</p>
+<p class="year">
+Rilis • 2014
+</p>
+</div>
+
+</div>
+
+<!-- =========================
+KOLEKSI JURNAL 2
+TARUH MENGGANTIKAN CARD JURNAL KEDUA
+========================= -->
+
+<div class="card"
+
+data-genre="Teknologi"
+data-year="2023"
+
+onclick="showModal(
+'Nature: National Academic Journal of Architecture',
+'Tim Editorial Nature Journal',
+'UIN Alauddin Makassar',
+'2023',
+'Makassar',
+'-',
+'Jurnal akademik yang memuat penelitian dan kajian arsitektur serta budaya bangunan di Indonesia.',
+'https://sevima.com/wp-content/uploads/2019/02/Jurnal-imiah.jpg'
+)">
+
+<div class="card-cover">
+<img src="nature.jpeg">
+</div>
+
+<div class="card-info">
+<h3>Nature Journal</h3>
+<p>Jurnal Arsitektur</p>
+<p class="year">
+Rilis • 2023
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- SKRIPSI -->
+
+<div id="skripsi" class="tab-content">
+
+<!-- FILTER SKRIPSI -->
+
+<div class="filter-section">
+
+<select class="filter-genre">
+    <option value="all">Semua Fakultas</option>
+    <option value="Ilmu Komputer">Ilmu Komputer</option>
+    <option value="Pendidikan">Pendidikan</option>
+    <option value="Ekonomi">Ekonomi</option>
+    <option value="Hukum">Hukum</option>
+</select>
+
+<select class="filter-year">
+    <option value="all">Semua Tahun</option>
+    <option value="2000-2010">2000 - 2010</option>
+    <option value="2011-2015">2011 - 2015</option>
+    <option value="2016-2020">2016 - 2020</option>
+    <option value="2021-2030">2021 - 2030</option>
+</select>
+
+</div>
+
+<!-- =========================
+KOLEKSI SKRIPSI 1
+TARUH MENGGANTIKAN CARD SKRIPSI PERTAMA
+========================= -->
+
+<div class="card-grid">
+
+<div class="card"
+
+data-genre="Pendidikan"
+data-year="2008"
+
+onclick="showModal(
+'Efek Xylitol dalam Berbagai Konsentrasi terhadap Jumlah Koloni Candida Albicans',
+'Shandy Sastra',
+'Universitas Indonesia',
+'2008',
+'Depok',
+'-',
+'Penelitian mengenai pengaruh xylitol terhadap pertumbuhan koloni Candida albicans secara in vitro.',
+'https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg'
+)">
+
+<div class="card-cover">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg">
+</div>
+
+<div class="card-info">
+<h3>Efek Xylitol</h3>
+<p>Skripsi Kedokteran</p>
+<p class="year">
+Rilis • 2008
+</p>
+</div>
+
+</div>
+
+<!-- =========================
+KOLEKSI SKRIPSI 2
+TARUH MENGGANTIKAN CARD SKRIPSI KEDUA
+========================= -->
+
+<div class="card"
+
+data-genre="Ekonomi"
+data-year="2011"
+
+onclick="showModal(
+'Analisis Kinerja Intellectual Capital terhadap Harga Saham dan Performa Keuangan',
+'Sigit Widi Susanto',
+'Universitas Indonesia',
+'2011',
+'Depok',
+'-',
+'Skripsi yang membahas pengaruh intellectual capital terhadap performa perusahaan sektor perbankan.',
+'https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg'
+)">
+
+<div class="card-cover">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg">
+</div>
+
+<div class="card-info">
+<h3>Intellectual Capital</h3>
+<p>Skripsi Ekonomi</p>
+<p class="year">
+Rilis • 2011
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EBOOK -->
+
+<div id="ebook" class="tab-content">
+
+<!-- FILTER EBOOK -->
+
+<div class="filter-section">
+
+<select class="filter-genre">
+    <option value="all">Semua Bahasa</option>
+    <option value="Indonesia">Indonesia</option>
+    <option value="Inggris">Inggris</option>
+    <option value="Jepang">Jepang</option>
+</select>
+
+<select class="filter-year">
+    <option value="all">Semua Tahun</option>
+    <option value="1990-2000">1990 - 2000</option>
+    <option value="2001-2010">2001 - 2010</option>
+    <option value="2011-2020">2011 - 2020</option>
+    <option value="2021-2030">2021 - 2030</option>
+</select>
+
+</div>
+
+<div class="card-grid">
+
+<!-- EBOOK 1 -->
+
+<div class="card"
+
+data-genre="Psikologi"
+data-year="2018"
+
+onclick="showModal(
+'Filosofi Teras',
+'Henry Manampiring',
+'Kompas',
+'2018',
+'Jakarta',
+'9786024125181',
+'Buku pengembangan diri yang membahas filsafat Stoikisme dan penerapannya dalam kehidupan sehari-hari.',
+'https://images-na.ssl-images-amazon.com/images/I/71TRUbzcvaL.jpg'
+)">
+
+<div class="card-cover">
+<img src="https://images-na.ssl-images-amazon.com/images/I/71TRUbzcvaL.jpg">
+</div>
+
+<div class="card-info">
+<h3>Filosofi Teras</h3>
+<p class="author">Henry Manampiring</p>
+<p class="year">E-Book • 2018</p>
+</div>
+
+</div>
+
+<!-- EBOOK 2 -->
+
+<div class="card"
+
+data-genre="Keuangan"
+data-year="1997"
+
+onclick="showModal(
+'Rich Dad Poor Dad',
+'Robert T. Kiyosaki',
+'Plata Publishing',
+'1997',
+'Scottsdale',
+'9781612680194',
+'Buku tentang pengelolaan keuangan pribadi dan pola pikir dalam membangun aset serta investasi.',
+'https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg'
+)">
+
+<div class="card-cover">
+<img src="https://images-na.ssl-images-amazon.com/images/I/81bsw6fnUiL.jpg">
+</div>
+
+<div class="card-info">
+<h3>Rich Dad Poor Dad</h3>
+<p class="author">Robert T. Kiyosaki</p>
+<p class="year">E-Book • 1997</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div id="detailModal" class="modal">
+
+<div class="modal-content">
+
+<img id="modalImage">
+
+<div class="modal-body">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<h2 id="modalTitle"></h2>
+
+<p><b>Penulis:</b> <span id="modalAuthor"></span></p>
+<p><b>Penerbit:</b> <span id="modalPublisher"></span></p>
+<p><b>Tahun Terbit:</b> <span id="modalYear"></span></p>
+<p><b>Kota Terbit:</b> <span id="modalCity"></span></p>
+<p><b>ISBN:</b> <span id="modalISBN"></span></p>
+
+<p>
+<b>Deskripsi:</b><br>
+<span id="modalDesc"></span>
+</p>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<!-- ========= KOLOM 1 ========= -->
+
+<div>
+
+<div class="footer-logo">
+
+<!-- LOGO -->
+<div class="circle">
+
+
+
+<img src="logo.png">
+
+
+
+</div>
+
+<div>
+
+<h3>Whisperia Library</h3>
+
+<p class="footer-tagline">
+WHERE KNOWLEDGE FEELS LIKE HOME
+</p>
+
+</div>
+
+</div>
+
+<p class="footer-desc">
+Perpustakaan modern yang menyediakan akses informasi,
+koleksi pengetahuan, ruang belajar nyaman,
+serta layanan digital inspiratif bagi seluruh pengunjung.
+</p>
+
+</div>
+
+<!-- ========= KOLOM 2 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Jam Operasional
+</h3>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Senin - Jumat : 08.00 - 20.00
+</p>
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Sabtu : 09.00 - 17.00
+</p>
+
+</div>
+
+<br>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+Jl. Tembalang Selatan III No.60, Pedalangan, Banyumanik, Kota Semarang, Jawa Tengah
+</p>
+
+</div>
+
+<iframe src="https://maps.google.com/maps?q=Jl.%20Tembalang%20Selatan%20III%20No.%2060,%20Pedalangan,%20Banyumanik,%20Kota%20Semarang,%20Jawa%20Tengah&t=&z=17&ie=UTF8&iwloc=&output=embed"
+width="100%" 
+  height="200" 
+  style="border:0; border-radius: 4px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</div>
+
+<!-- ========= KOLOM 3 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Quick Links
+</h3>
+
+<div class="footer-links">
+
+<a href="Syarat Pinjam Koleksi Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Syarat Pinjam Koleksi
+</a>
+
+<a href="FAQ Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+FAQ
+</a>
+
+</div>
+
+<br>
+
+<h3 class="footer-title">
+Daftar Layanan
+</h3>
+
+<div class="footer-links">
+
+<a href="layanan 1.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Sirkulasi
+</a>
+
+<a href="layanan 3.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Referensi
+</a>
+
+<a href="Layanan Maker Space Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Maker Space
+</a>
+
+<a href="Layanan Bahasa Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Bahasa
+</a>
+
+</div>
+
+</div>
+
+<!-- ========= KOLOM 4 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Kontak Kami
+</h3>
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<p>whisperialibrary@gmail.com</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<p>+62 895 1221 8040</p>
+</div>
+
+</div>
+
+<div class="social-title">
+Sosial Media Kami
+</div>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/whisperia.libs?igsh=eGVkNnFmOHl4YjI4"
+target="_blank"
+class="instagram">
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="https://www.tiktok.com/@whisperialibs?_r=1&_t=ZS-96DiwBWRsjE"
+target="_blank"
+class="tiktok">
+
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://youtube.com/@whispiee?si=dSfwmZYw-iuWT4tF"
+target="_blank"
+class="youtube">
+
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="copyright">
+
+© 2026 Whisperia Library — All Rights Reserved
+
+</div>
+
+</footer>
+
+<script>
+
+/* =========================
+   TAB
+========================= */
+
+function openTab(evt, tabName){
+
+    document.querySelectorAll(".tab-content").forEach(tab => {
+        tab.classList.remove("active");
+    });
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document.getElementById(tabName).classList.add("active");
+
+    evt.currentTarget.classList.add("active");
+
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+function showModal(title, author, publisher, year, city, isbn, desc, image){
+
+    document.getElementById("detailModal").style.display = "block";
+
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalAuthor").innerText = author;
+    document.getElementById("modalPublisher").innerText = publisher;
+    document.getElementById("modalYear").innerText = year;
+    document.getElementById("modalCity").innerText = city;
+    document.getElementById("modalISBN").innerText = isbn;
+    document.getElementById("modalDesc").innerText = desc;
+
+    document.getElementById("modalImage").src = image;
+
+}
+
+function closeModal(){
+
+    document.getElementById("detailModal").style.display = "none";
+
+}
+
+window.onclick = function(event){
+
+    const modal = document.getElementById("detailModal");
+
+    if(event.target === modal){
+
+        modal.style.display = "none";
+
+    }
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const searchInput = document.querySelector(".search-box input");
+
+searchInput.addEventListener("keyup", function(){
+
+    const keyword = this.value.toLowerCase();
+
+    document.querySelectorAll(".card").forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        if(text.includes(keyword)){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+
+
+/* =========================
+   FILTER SEMUA TAB
+========================= */
+
+document.querySelectorAll(".tab-content").forEach(section => {
+
+    const genreFilter = section.querySelector(".filter-genre");
+
+    const yearFilter = section.querySelector(".filter-year");
+
+    if(genreFilter){
+
+        genreFilter.addEventListener("change", () => {
+            filterCards(section);
+        });
+
+    }
+
+    if(yearFilter){
+
+        yearFilter.addEventListener("change", () => {
+            filterCards(section);
+        });
+
+    }
+
+});
+
+
+function filterCards(section){
+
+    const genreFilter = section.querySelector(".filter-genre");
+    const yearFilter = section.querySelector(".filter-year");
+
+    const genreValue = genreFilter ? genreFilter.value : "all";
+
+    const yearValue = yearFilter ? yearFilter.value : "all";
+
+    const cards = section.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        const cardGenre = card.dataset.genre || "";
+
+        const cardYear = parseInt(card.dataset.year) || 0;
+
+        let genreMatch =
+            genreValue === "all" ||
+            genreValue === cardGenre;
+
+        let yearMatch = true;
+
+        if(yearValue !== "all"){
+
+            const range = yearValue.split("-");
+
+            const start = parseInt(range[0]);
+
+            const end = parseInt(range[1]);
+
+            yearMatch =
+                cardYear >= start &&
+                cardYear <= end;
+
+        }
+
+        if(genreMatch && yearMatch){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   ESC CLOSE MODAL
+========================= */
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+
+        closeModal();
+
+    }
+
+});
+</script>
+
+</body>
+</html>

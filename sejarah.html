@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sejarah - Whisperia Library</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#fff9f3;
+overflow-x:hidden;
+color:#333;
+}
+
+/* ================= HEADER ================= */
+header{
+    width:100%;
+    background:#C31149;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#F3D9B1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.logo-text h2{
+    color:white;
+    font-size:30px;
+    font-family:'Cinzel',serif;
+}
+.logo-text h2 span{
+    color:#F3D9B1;
+    font-size:38px;
+}
+.logo-text p{
+    color:#ffe2eb;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+/* ================= NAVBAR ================= */
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+align-items:center;
+}
+
+nav ul li{
+position:relative;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.3s;
+padding:10px 0;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+nav ul li a:hover{
+color:#F3D9B1;
+}
+
+/* GARIS BAWAH ANIMASI */
+nav ul li a{
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+
+width:0%;
+height:3px;
+
+background:#F3D9B1;
+border-radius:10px;
+
+transition:0.35s ease;
+}
+
+/* SAAT DI HOVER */
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MENU YANG SEDANG AKTIF */
+nav ul li a.active::after{
+width:100%;
+}
+
+nav ul li a.active{
+color:#F3D9B1;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-menu{
+pointer-events:auto;
+position:absolute;
+top:100%;
+left:0;
+background:white;
+width:270px;
+
+z-index:9999;
+
+border-radius:0 0 16px 16px;
+overflow:hidden;
+
+opacity:0;
+visibility:hidden;
+transform:translateY(15px);
+
+transition:0.35s ease;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+color:#333;
+padding:16px 22px;
+display:block;
+font-size:15px;
+border-bottom:1px solid #f2f2f2;
+transition:0.3s;
+}
+
+.dropdown-menu a:hover{
+background:#C31149;
+color:white;
+padding-left:30px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+padding-top:130px;
+padding-bottom:80px;
+background:
+linear-gradient(rgba(195,17,73,0.8),
+rgba(195,17,73,0.75)),
+url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:65px;
+font-family:'Cinzel',serif;
+margin-bottom:18px;
+}
+
+.hero p{
+max-width:800px;
+margin:auto;
+line-height:1.9;
+font-size:18px;
+color:#ffe8ef;
+}
+/* ================= HERO SHOW UP ================= */
+
+.hero-animate h1{
+opacity:0;
+transform:translateY(60px);
+
+animation:
+heroShowUp 1s ease forwards;
+}
+
+.hero-animate p{
+opacity:0;
+transform:translateY(60px);
+
+animation:
+heroShowUp 1s ease forwards;
+
+animation-delay:0.4s;
+}
+
+@keyframes heroShowUp{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ================= HISTORY ================= */
+
+.history-section{
+padding:90px 6%;
+position:relative;
+}
+
+.history-container{
+background:white;
+padding:45px;
+border-radius:35px;
+display:grid;
+grid-template-columns:1.1fr 0.9fr;
+gap:40px;
+align-items:center;
+
+box-shadow:0 12px 35px rgba(0,0,0,0.07);
+
+position:relative;
+overflow:hidden;
+}
+
+.history-text{
+position:relative;
+z-index:2;
+}
+
+.history-text h2{
+font-size:42px;
+color:#A3193D;
+font-family:'Cinzel',serif;
+margin-bottom:25px;
+}
+
+.history-text h2 i{
+font-size:24px;
+margin-right:10px;
+}
+
+.history-text p{
+line-height:2;
+margin-bottom:18px;
+text-align:justify;
+color:#444;
+}
+
+.history-text strong{
+color:#C31149;
+}
+
+.history-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.history-image img.library-img{
+width:100%;
+height:360px;
+object-fit:cover;
+border-radius:30px;
+box-shadow:0 15px 30px rgba(0,0,0,0.12);
+}
+
+.mascot-side{
+position:absolute;
+right:-70px;
+bottom:-25px;
+width:220px;
+
+animation:
+floatCute 3s ease-in-out infinite,
+wiggle 4s ease-in-out infinite;
+}
+
+/* ================= FUN FACT ================= */
+
+.funfact-area{
+margin-top:45px;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+align-items:stretch;
+}
+
+/* LEFT CARD */
+
+.funfact-trigger{
+background:#fffaf4;
+border:2px dashed #f3d6b2;
+border-radius:28px;
+
+padding:22px 28px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.04);
+}
+
+.funfact-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.funfact-left img{
+width:110px;
+
+animation:
+floatCute 3s ease-in-out infinite,
+wiggle 4s ease-in-out infinite;
+}
+
+.funfact-text h3{
+font-size:42px;
+font-family:'Cinzel',serif;
+color:#A3193D;
+margin-bottom:8px;
+}
+
+.funfact-text p{
+font-size:15px;
+color:#666;
+line-height:1.7;
+}
+
+.fact-button{
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#C31149;
+color:white;
+font-size:20px;
+cursor:pointer;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+transition:0.35s;
+flex-shrink:0;
+}
+
+.fact-button:hover{
+transform:scale(1.08);
+background:#9e0d3b;
+}
+
+.fact-button.rotate{
+transform:rotate(180deg);
+}
+
+/* RIGHT CONTENT */
+
+.funfact-content{
+background:#fffaf4;
+border:2px dashed #f3d6b2;
+border-radius:28px;
+
+padding:28px 32px;
+
+line-height:2;
+text-align:justify;
+
+box-shadow:0 10px 20px rgba(0,0,0,0.04);
+
+opacity:0;
+transform:translateX(40px);
+
+pointer-events:none;
+
+transition:0.5s;
+}
+
+.funfact-content.active{
+opacity:1;
+transform:translateX(0);
+pointer-events:auto;
+}
+
+.funfact-content strong{
+color:#C31149;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+margin-top:40px;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+grid-template-columns:repeat(4,220px);
+justify-content:center;
+}
+
+.timeline-card{
+background:white;
+padding:28px 22px;
+border-radius:28px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+position:relative;
+overflow:hidden;
+
+transition:0.45s;
+}
+
+.timeline-card:hover{
+transform:
+translateY(-12px)
+rotate(-1deg);
+
+box-shadow:0 20px 35px rgba(195,17,73,0.15);
+}
+
+.timeline-card::after{
+content:'';
+position:absolute;
+
+top:-120%;
+left:-40%;
+
+width:80px;
+height:250%;
+
+background:rgba(255,255,255,0.45);
+
+transform:rotate(25deg);
+
+transition:0.7s;
+}
+
+.timeline-card:hover::after{
+left:130%;
+}
+
+.timeline-icon{
+width:70px;
+height:70px;
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:28px;
+
+margin-bottom:18px;
+}
+
+.green{
+background:#eef4d3;
+color:#91a03d;
+}
+
+.red{
+background:#ffe4e4;
+color:#dd5f5f;
+}
+
+.yellow{
+background:#fff0cc;
+color:#e2a32b;
+}
+
+.olive{
+background:#eef1d6;
+color:#8c9a43;
+}
+
+.timeline-year{
+font-size:42px;
+font-weight:700;
+font-family:'Cinzel',serif;
+color:#C31149;
+margin-bottom:10px;
+}
+
+.timeline-card h3{
+font-size:23px;
+margin-bottom:12px;
+color:#333;
+}
+
+.timeline-card p{
+line-height:1.8;
+font-size:14px;
+color:#666;
+text-align: justify;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes floatCute{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+@keyframes wiggle{
+
+0%{
+transform:rotate(0deg);
+}
+
+25%{
+transform:rotate(2deg);
+}
+
+50%{
+transform:rotate(-2deg);
+}
+
+75%{
+transform:rotate(2deg);
+}
+
+100%{
+transform:rotate(0deg);
+}
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#C31149;
+    color:white;
+    padding:85px 6% 35px;
+    position:relative;
+    overflow:hidden;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    align-items:flex-start;
+}
+
+/* ========= LOGO ========= */
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+}
+
+.circle{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    overflow:hidden;
+    background:transparent;
+    flex-shrink:0;
+}
+
+.circle:hover{
+    transform:rotate(10deg) scale(1.08);
+}
+
+.circle img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:50%;
+    display:block;
+}
+
+.footer-logo h3{
+    font-size:26px;
+    margin-bottom:4px;
+}
+
+.footer-tagline{
+    color:#ffe0ea;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.footer-desc{
+    color:#ffe6ee;
+    line-height:1.8;
+    margin-bottom:28px;
+    text-align: justify;
+}
+
+
+/* ========= SOSMED ========= */
+
+.social-title{
+    color:#F3D9B1;
+    margin-bottom:16px;
+    font-weight:600;
+    font-size:17px;
+}
+
+.socials{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.socials a{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    font-size:24px;
+    background:#F3D9B1;
+    color:#C31149;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* ANIMASI SOSMED */
+
+.socials a::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    top:100%;
+    left:0;
+    transition:0.4s;
+    z-index:0;
+}
+
+.socials a:hover::before{
+    top:0;
+}
+
+.socials a i{
+    position:relative;
+    z-index:2;
+}
+
+.socials a:hover{
+    transform:translateY(-8px) rotate(10deg) scale(1.08);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ========= TITLE ========= */
+
+.footer-title{
+    color:#F3D9B1;
+    margin-bottom:22px;
+    font-size:22px;
+}
+
+/* ========= LINKS ========= */
+
+.footer-links a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    margin-bottom:14px;
+    transition:0.35s;
+}
+
+.footer-links a:hover{
+    color:#F3D9B1;
+    transform:translateX(8px);
+}
+
+/* ========= INFO ========= */
+
+.footer-info p{
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ffe6ee;
+}
+
+/* ========= MAP ========= */
+
+iframe{
+    width:100%;
+    border:none;
+    border-radius:20px;
+    margin-top:18px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ========= CONTACT ========= */
+
+.contact-box{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.contact-icon{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#F3D9B1;
+    color:#C31149;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    transition:0.35s;
+}
+
+.contact-item:hover .contact-icon{
+    transform:rotate(10deg) scale(1.1);
+    background:white;
+}
+
+/* ========= COPYRIGHT ========= */
+
+.copyright{
+    text-align:center;
+    margin-top:65px;
+    padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.2);
+    color:#ffe2eb;
+    font-size:15px;
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media(max-width:768px){
+
+.footer-container{
+    gap:40px;
+}
+
+.footer-logo{
+    align-items:flex-start;
+}
+
+.socials{
+    justify-content:flex-start;
+}
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+.timeline{
+grid-template-columns:repeat(2,1fr);
+}
+
+.funfact-area{
+grid-template-columns:1fr;
+}
+
+.history-container{
+grid-template-columns:1fr;
+}
+
+.mascot-side{
+position:relative;
+right:0;
+bottom:0;
+margin-top:20px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+height:auto;
+padding:170px 6% 90px;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:48px;
+}
+
+.hero-left,
+.hero-right{
+display:none;
+}
+
+.timeline{
+grid-template-columns:1fr;
+}
+
+.funfact-left{
+flex-direction:column;
+text-align:center;
+}
+
+.funfact-text h3{
+font-size:34px;
+}
+
+.history-container{
+padding:30px;
+}
+
+.history-image img.library-img{
+height:280px;
+}
+
+.mascot-side{
+width:150px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+<div class="logo-area">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo Whisperia">
+    </div>
+
+    <div class="logo-text">
+        <h2><span>W</span>hisperia Library</h2>
+        <p>WHERE KNOWLEDGE FEELS LIKE HOME</p>
+    </div>
+
+</div>
+
+<!-- Navbar -->
+    <nav>
+        <ul>
+
+            <!-- BERANDA -->
+			<li>
+                <a href="home.html">Beranda</a>
+			</li>
+				
+            <!-- PROFIL -->
+            <li class="dropdown">
+                <a href="halaman8.html">Profil ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="sejarah.html">Sejarah</a>
+                    <a href="visimisi.html">Visi & Misi</a>
+                    <a href="strukturorganisasi.html">Struktur Organisasi</a>
+                    <a href="maskotperpustakaan.html">Maskot Perpustakaan</a>
+                </div>
+            </li>
+			
+			<!-- KOLEKSI -->
+            <li><a href="koleksi.html">Koleksi</a>
+			</li>
+
+            <!-- LAYANAN -->
+            <li class="dropdown">
+                <a href="opening layanan.html">Layanan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="opac.html">OPAC</a>
+                    <a href="layanan 1.html">Layanan Sirkulasi</a>
+                    <a href="layanan 3.html">Layanan Referensi</a>
+                    <a href="Layanan Maker Space Whisperia.html">Layanan Maker Space</a>
+                    <a href="Layanan Bahasa Whisperia.html">Layanan Bahasa</a>
+                </div>
+            </li>
+
+            <!-- BANTUAN -->
+            <li class="dropdown">
+                <a href="opening bantuan.html">Bantuan ▾</a>
+
+                <div class="dropdown-menu">
+                    <a href="Syarat Pinjam Koleksi Whisperia.html">Syarat Pinjam Koleksi</a>
+                    <a href="Panduan Whisperia.html">Panduan</a>
+                    <a href="FAQ Whisperia.html">FAQ</a>
+                </div>
+            </li>
+
+            <!-- KONTAK -->
+            <li>
+                <a href="CONTACT US TRIAL 24.html">Kontak</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-content hero-animate">
+
+<h1> Sejarah Whisperia Library </h1>
+
+<p>
+Perjalanan Whisperia Library sebagai ruang literasi modern
+yang menghadirkan kenyamanan, pengetahuan,
+dan pengalaman belajar yang lebih hangat bagi masyarakat.
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= HISTORY ================= -->
+
+<section class="history-section">
+
+<div class="history-container">
+
+<div class="history-text">
+
+<h2>
+<i class="fa-solid fa-feather-pointed"></i>
+Tentang Perjalanan Kami
+</h2>
+
+<p>
+Whisperia Library didirikan sebagai ruang literasi modern
+yang bertujuan menghadirkan pengalaman membaca dan belajar
+yang lebih nyaman, hangat, dan inspiratif.
+Berawal dari gagasan untuk menciptakan perpustakaan
+yang tidak hanya menjadi tempat mencari buku,
+tetapi juga ruang eksplorasi ide dan kreativitas,
+Whisperia Library mulai berkembang menjadi pusat informasi
+yang terbuka bagi semua kalangan.
+</p>
+
+<p>
+Seiring perkembangan teknologi informasi,
+Whisperia Library mulai menghadirkan berbagai layanan digital
+seperti akses e-book, jurnal online,
+dan sistem pencarian koleksi yang lebih modern.
+Perpustakaan ini juga aktif mengadakan kegiatan edukatif,
+diskusi buku, workshop literasi digital,
+hingga komunitas membaca bersama.
+</p>
+
+<p>
+Dengan mengusung slogan
+<strong>“Where Knowledge Feels Like Home”</strong>,
+Whisperia Library terus berkomitmen membangun lingkungan
+belajar yang inklusif, modern, dan menyenangkan
+bagi setiap pengunjung.
+</p>
+
+</div>
+
+<div class="history-image">
+
+<img
+src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1400&auto=format&fit=crop"
+class="library-img">
+
+<img src="Terinspirasi.png"
+class="mascot-side">
+
+</div>
+
+</div>
+
+<!-- ================= FUN FACT ================= -->
+
+<div class="funfact-area">
+
+<!-- LEFT -->
+
+<div class="funfact-trigger">
+
+<div class="funfact-left">
+
+<img src="Ceria.png">
+
+<div class="funfact-text">
+
+<h3>Fun Fact</h3>
+
+<p>
+Klik tombol di samping untuk mengetahui
+asal-usul nama Whisperia Library!
+</p>
+
+</div>
+
+</div>
+
+<button
+class="fact-button"
+id="factButton"
+onclick="toggleFact()">
+
+<i class="fa-solid fa-angle-down"></i>
+
+</button>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="funfact-content"
+id="funFactContent">
+
+<p>
+
+<strong>Whisperia Library</strong>
+berasal dari kata
+<strong>“whisper”</strong>
+yang berarti
+<strong>“bisikan”</strong>
+dan dipadukan dengan akhiran
+<strong>“-ia”</strong>
+yang memberi kesan dunia atau ruang imajinatif.
+
+<br><br>
+
+Nama ini melambangkan perpustakaan sebagai tempat
+di mana
+<strong>ilmu, cerita, dan inspirasi</strong>
+“berbisik” lembut kepada setiap pengunjung
+melalui buku dan pengetahuan.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ================= TIMELINE ================= -->
+
+<div class="timeline">
+
+<!-- CARD 1 -->
+
+<div class="timeline-card">
+
+<div class="timeline-icon green">
+<i class="fa-solid fa-seedling"></i>
+</div>
+
+<div class="timeline-year">
+2021
+</div>
+
+<h3>Awal Berdiri</h3>
+
+<p>
+Whisperia Library mulai dibangun sebagai ruang
+literasi modern dengan konsep hangat dan nyaman.
+</p>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="timeline-card">
+
+<div class="timeline-icon red">
+<i class="fa-solid fa-desktop"></i>
+</div>
+
+<div class="timeline-year">
+2022
+</div>
+
+<h3>Pengembangan Digital</h3>
+
+<p>
+Mulai menghadirkan layanan koleksi digital,
+e-book, dan sistem pencarian informasi online.
+</p>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="timeline-card">
+
+<div class="timeline-icon yellow">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<div class="timeline-year">
+2024
+</div>
+
+<h3>Program Literasi</h3>
+
+<p>
+Mengembangkan berbagai kegiatan edukatif,
+workshop, dan komunitas membaca bersama.
+</p>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="timeline-card">
+
+<div class="timeline-icon olive">
+<i class="fa-solid fa-building-columns"></i>
+</div>
+
+<div class="timeline-year">
+2026
+</div>
+
+<h3>Whisperia Modern Library</h3>
+
+<p>
+Menjadi perpustakaan modern dengan layanan
+informasi, ruang belajar, dan akses digital
+yang lebih luas.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<!-- ========= KOLOM 1 ========= -->
+
+<div>
+
+<div class="footer-logo">
+
+<!-- LOGO -->
+<div class="circle">
+
+
+
+<img src="logo.png">
+
+
+
+</div>
+
+<div>
+
+<h3>Whisperia Library</h3>
+
+<p class="footer-tagline">
+WHERE KNOWLEDGE FEELS LIKE HOME
+</p>
+
+</div>
+
+</div>
+
+<p class="footer-desc">
+Perpustakaan modern yang menyediakan akses informasi,
+koleksi pengetahuan, ruang belajar nyaman,
+serta layanan digital inspiratif bagi seluruh pengunjung.
+</p>
+
+</div>
+
+<!-- ========= KOLOM 2 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Jam Operasional
+</h3>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Senin - Jumat : 08.00 - 20.00
+</p>
+
+<p>
+<i class="fa-regular fa-clock"></i>
+Sabtu : 09.00 - 17.00
+</p>
+
+</div>
+
+<br>
+
+<div class="footer-info">
+
+<p>
+<i class="fa-solid fa-location-dot"></i>
+Jl. Tembalang Selatan III No.60, Pedalangan, Banyumanik, Kota Semarang, Jawa Tengah
+</p>
+
+</div>
+
+<iframe src="https://maps.google.com/maps?q=Jl.%20Tembalang%20Selatan%20III%20No.%2060,%20Pedalangan,%20Banyumanik,%20Kota%20Semarang,%20Jawa%20Tengah&t=&z=17&ie=UTF8&iwloc=&output=embed"
+width="100%" 
+  height="200" 
+  style="border:0; border-radius: 4px;" 
+  allowfullscreen="" 
+  loading="lazy" 
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</div>
+
+<!-- ========= KOLOM 3 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Quick Links
+</h3>
+
+<div class="footer-links">
+
+<a href="Syarat Pinjam Koleksi Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Syarat Pinjam Koleksi
+</a>
+
+<a href="FAQ Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+FAQ
+</a>
+
+</div>
+
+<br>
+
+<h3 class="footer-title">
+Daftar Layanan
+</h3>
+
+<div class="footer-links">
+
+<a href="layanan 1.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Sirkulasi
+</a>
+
+<a href="layanan 3.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Referensi
+</a>
+
+<a href="Layanan Maker Space Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Maker Space
+</a>
+
+<a href="Layanan Bahasa Whisperia.html">
+<i class="fa-solid fa-angle-right"></i>
+Layanan Bahasa
+</a>
+
+</div>
+
+</div>
+
+<!-- ========= KOLOM 4 ========= -->
+
+<div>
+
+<h3 class="footer-title">
+Kontak Kami
+</h3>
+
+<div class="contact-box">
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-envelope"></i>
+</div>
+
+<div>
+<p>whisperialibrary@gmail.com</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<div>
+<p>+62 895 1221 8040</p>
+</div>
+
+</div>
+
+<div class="social-title">
+Sosial Media Kami
+</div>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/whisperia.libs?igsh=eGVkNnFmOHl4YjI4"
+target="_blank"
+class="instagram">
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="https://www.tiktok.com/@whisperialibs?_r=1&_t=ZS-96DiwBWRsjE"
+target="_blank"
+class="tiktok">
+
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://youtube.com/@whispiee?si=dSfwmZYw-iuWT4tF"
+target="_blank"
+class="youtube">
+
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- COPYRIGHT -->
+
+<div class="copyright">
+
+© 2026 Whisperia Library — All Rights Reserved
+
+</div>
+
+</footer>
+
+<script>
+
+function toggleFact(){
+
+const content =
+document.getElementById('funFactContent');
+
+const button =
+document.getElementById('factButton');
+
+content.classList.toggle('active');
+
+button.classList.toggle('rotate');
+
+}
+
+</script>
+
+</body>
+</html>
